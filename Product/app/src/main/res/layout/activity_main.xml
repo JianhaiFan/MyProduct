@@ -8,17 +8,20 @@
     tools:context="com.xiaofan.product.MainActivity">
 
     <TextView
+        android:id="@+id/tv_test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         yms:layout_widthPercent="50%w"
         yms:layout_heightPercent="50%w"
-        android:background="#55ff0000"
+        android:gravity="center"
         android:text="percent" />
 
-    <TextView
-        android:layout_width="@dimen/yms80.0dimens80.0dp"
-        android:layout_height="@dimen/yms80.0dimens80.0dp"
-        android:background="#550000ff"
-        android:text="common" />
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+
 
 </com.xiaofan.product.adaptation.percent.PercentLinearLayout>

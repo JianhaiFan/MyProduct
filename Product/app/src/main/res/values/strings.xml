@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Product</string>
+    <!-- 自定义字符串 -->
+    <string name="yms">医麦思</string>
+
+    <bool name="yes">true</bool>
+    <bool name="no">false</bool>
 </resources>
