@@ -102,7 +102,7 @@ public class PercentLayoutHelper {
 	public static PercentLayoutInfo getPercentLayoutInfo(Context context, AttributeSet attrs) {
 		PercentLayoutInfo info = null;
 		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.PercentLayout_Layout);
-		
+
 		int index = R.styleable.PercentLayout_Layout_layout_widthPercent;
 		String sizeStr = array.getString(index);
 		PercentLayoutInfo.PercentVal percentVal = getPercentVal(sizeStr, true);
@@ -189,7 +189,7 @@ public class PercentLayoutHelper {
 		if (percentVal != null) {
 			checkForInfoExists(info);
 			info.maxHeightPercent = percentVal;
-		} 
+		}
 
 		percentVal = getPercentVal(array, R.styleable.PercentLayout_Layout_layout_minWidthPercent, true);
 		if (percentVal != null) {

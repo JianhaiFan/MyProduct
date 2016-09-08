@@ -10,7 +10,12 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-
+/**
+ * @author: 范建海
+ * @createTime: 2016/9/6 10:55
+ * @className:  PercentLinearLayout
+ * @Description:   百分比适配之线性布局
+ */
 public class PercentLinearLayout extends LinearLayout {
 
 	private PercentLayoutHelper mPercentLayoutHelper;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--点击时显示的颜色-->
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="@dimen/yms4.0dimens4.0dp" />
+            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/colorGrayDivider" />
+            <solid android:color="@color/colorGreen"></solid>
+        </shape>
+    </item>
+    <!--选中时显示的颜色-->
+    <item android:state_selected="true">
+        <shape>
+            <corners android:radius="@dimen/yms4.0dimens4.0dp" />
+            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/colorGrayDivider" />
+            <solid android:color="@color/colorGreen"></solid>
+        </shape>
+    </item>
+    <!--默认显示的颜色-->
+    <item>
+        <shape>
+            <corners android:radius="@dimen/yms4.0dimens4.0dp" />
+            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/colorRed" />
+            <solid android:color="@color/colorGreenNormal"></solid>
+        </shape>
+    </item>
+
+</selector>

@@ -4,5 +4,11 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <!-- 自定义颜色 -->
+    <!-- 红色 -->
     <color name="colorRed">#FF0000</color>
+    <!-- 绿色 -->
+    <color name="colorGreen">#00FF00</color>
+    <color name="colorGreenNormal">#DF09BB07</color>
+    <!-- 灰色 -->
+    <color name="colorGrayDivider">#DCDCDC</color>
 </resources>

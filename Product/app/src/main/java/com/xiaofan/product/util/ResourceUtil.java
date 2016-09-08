@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -64,7 +65,7 @@ public class ResourceUtil {
      * 获取指定资源id对应的布尔值
      * @param ctx 上下文
      * @param resID 资源ID
-     * @return
+     * @return (测试通过)
      */
     public static boolean getBoolean(Context ctx,int resID) {
         return getResources(ctx).getBoolean(resID);
@@ -74,7 +75,7 @@ public class ResourceUtil {
      * 获取指定资源id对应的字符串
      * @param ctx 上下文
      * @param resID  字符串资源ID
-     * @return
+     * @return (测试通过)
      */
     public static String getString(Context ctx,int resID) {
         return getResources(ctx).getString(resID);
@@ -84,7 +85,7 @@ public class ResourceUtil {
      * 获取指定资源id对应的字符串数组
      * @param ctx 上下文
      * @param resID 字符串数组资源ID
-     * @return
+     * @return (测试通过)
      */
     public static String[] getStringArray(Context ctx,int resID) {
         return getResources(ctx).getStringArray(resID);
@@ -104,17 +105,55 @@ public class ResourceUtil {
      * 获取指定资源id对应的尺寸
      * @param ctx 上下文
      * @param resID 尺寸资源ID
-     * @return
+     * @return (测试通过) 返回的单位为 px(dp * density = px)(sp * density = px)
      */
     public static float getDimension(Context ctx,int resID) {
         return getResources(ctx).getDimension(resID);
     }
 
     /**
+     * 获取手机的像素密度
+     * @param ctx 上下文
+     * @return (测试通过) 返回屏幕密度等级(参考适配文件原理图)
+     */
+    public static float getDensity(Context ctx) {
+        return getResources(ctx).getDisplayMetrics().density;
+    }
+
+    /**
+     *
+     * @param ctx 上下文
+     * @return （测试通过）返回逻辑像素密度(参考适配文件原理图)
+     */
+    public static float getDensityDpi(Context ctx) {
+        return getResources(ctx).getDisplayMetrics().densityDpi;
+    }
+
+    /**
+     * dip换算为px
+     * @param ctx 上下文
+     * @param dpValue dp值
+     * @return (测试通过)
+     */
+    public static int dip2px(Context ctx, float dpValue) {
+        return (int) (dpValue * getDensity(ctx) + 0.5f);
+    }
+
+    /**
+     * px换算为dip
+     * @param ctx 上下文
+     * @param pxValue 像素值
+     * @return (测试通过)
+     */
+    public static float px2dip(Context ctx, int pxValue) {
+        return ((float) pxValue * 160) / getDensityDpi(ctx);
+    }
+
+    /**
      * 获取指定资源id对应的状态选择器
      * @param ctx 上下文
      * @param resID 资源ID
-     * @return
+     * @return (测试通过) 设置文字状态选择器，对应的资源文件写到color目录下面
      */
     public static ColorStateList getColorStateList(Context ctx, int resID) {
         return getResources(ctx).getColorStateList(resID);
@@ -132,44 +171,6 @@ public class ResourceUtil {
     }
 
     /**
-     * 获取手机的像素密度
-     * @param ctx 上下文
-     * @return
-     */
-    public static float getDensity(Context ctx) {
-        return getResources(ctx).getDisplayMetrics().density;
-    }
-
-    /**
-     *
-     * @param ctx 上下文
-     * @return
-     */
-    public static float getDensityDpi(Context ctx) {
-        return getResources(ctx).getDisplayMetrics().densityDpi;
-    }
-
-    /**
-     * dip换算为px
-     * @param ctx 上下文
-     * @param dpValue dp值
-     * @return
-     */
-     private int dip2px(Context ctx, float dpValue) {
-           return (int) (dpValue * getDensity(ctx) + 0.5f);
-     }
-
-    /**
-     * px换算为dip
-     * @param ctx 上下文
-     * @param pxValue 像素值
-     * @return
-     */
-     private float px2dip(Context ctx, int pxValue) {
-         return ((float) pxValue * 160) / getDensityDpi(ctx);
-     }
-
-    /**
      * 获取配置文件
      * @param ctx 上下文
      * @return
@@ -180,4 +181,4 @@ public class ResourceUtil {
 
 
 
-    }
+}

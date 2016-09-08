@@ -2,7 +2,15 @@
     <string name="app_name">Product</string>
     <!-- 自定义字符串 -->
     <string name="yms">医麦思</string>
-
-    <bool name="yes">true</bool>
-    <bool name="no">false</bool>
+    <string name="today">今天</string>
+    <string name="yesterday">昨天</string>
+    <!-- 布尔型常量 -->
+    <bool name="bool_true">true</bool>
+    <bool name="bool_false">false</bool>
+    <!--  字符串数组常量  -->
+    <string-array name="country">
+        <item>中国</item>
+        <item>美国</item>
+        <item>日本</item>
+    </string-array>
 </resources>

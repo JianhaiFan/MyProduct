@@ -6,61 +6,66 @@ import android.util.Log;
  * @author: 范建海
  * @createTime: 2016/8/24 20:42
  * @className:  LogUtil
- * @Description: 日志工具类
+ * @Description: 日志工具类  DEBUG布尔常量控制是否显示日志
+ *                          TAG为日志的标记
  */
 public class LogUtil {
+    /** 控制显示日志的常量 **/
+    public static final boolean DEBUG = true;
+    /** 日志标记常量 **/
+    public static final String TAG = "yms";
 
     public static void d(String desc) {
-        if (ConstantUtil.DEBUG)
-            Log.d(ConstantUtil.TAG, desc);
+        if (DEBUG)
+            Log.d(TAG,desc);
     }
 
     public static void d(String desc, Throwable tr) {
-        if (ConstantUtil.DEBUG)
-            Log.d(ConstantUtil.TAG, desc, tr);
+        if (DEBUG)
+            Log.d(TAG, desc, tr);
     }
 
     public static void v(String desc) {
-        if (ConstantUtil.DEBUG)
-            Log.v(ConstantUtil.TAG, desc);
+        if (DEBUG)
+            Log.v(TAG, desc);
     }
     public static void v(String desc, Throwable tr) {
-        if (ConstantUtil.DEBUG)
-            Log.v(ConstantUtil.TAG, desc);
+        if (DEBUG)
+            Log.v(TAG, desc);
     }
 
     public static void w(String desc) {
-        if (ConstantUtil.DEBUG)
-            Log.w(ConstantUtil.TAG, desc);
+        if (DEBUG)
+            Log.w(TAG, desc);
     }
 
     public static void w(Throwable ioe) {
-        if (ConstantUtil.DEBUG)
-            Log.w(ConstantUtil.TAG, ioe);
+        if (DEBUG)
+            Log.w(TAG, ioe);
     }
 
     public static void w(String desc, Throwable e) {
-        if (ConstantUtil.DEBUG)
-            Log.w(ConstantUtil.TAG, desc, e);
+        if (DEBUG)
+            Log.w(TAG, desc, e);
     }
 
     public static void i(String desc) {
-        if (ConstantUtil.DEBUG)
-            Log.i(ConstantUtil.TAG,desc);
+        if (DEBUG)
+            Log.i(TAG,desc);
     }
 
     public static void i(String desc, Throwable tr) {
-        if (ConstantUtil.DEBUG)
-            Log.i(ConstantUtil.TAG, desc, tr);
+        if (DEBUG)
+            Log.i(TAG, desc, tr);
     }
 
     public static void e(String desc) {
-        if (ConstantUtil.DEBUG)
-            Log.e(ConstantUtil.TAG, desc);
+        if (DEBUG)
+            Log.e(TAG, desc);
     }
 
     public static void e(String desc, Throwable tr) {
-        if (ConstantUtil.DEBUG)
-            Log.e(ConstantUtil.TAG, desc, tr);
+        if (DEBUG)
+            Log.e(TAG, desc, tr);
     }
 }
