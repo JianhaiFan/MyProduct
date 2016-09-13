@@ -11,14 +11,11 @@ import java.io.Serializable;
 public class DateUtilBean implements Serializable {
     /** 时间 **/
     private String createdStamp;
-    /** 其他 **/
-    private String otherInfo;
 
     public DateUtilBean(){}
 
-    public DateUtilBean(String createdStamp, String otherInfo) {
+    public DateUtilBean(String createdStamp) {
         this.createdStamp = createdStamp;
-        this.otherInfo = otherInfo;
     }
 
     public String getCreatedStamp() {
@@ -29,19 +26,10 @@ public class DateUtilBean implements Serializable {
         this.createdStamp = createdStamp;
     }
 
-    public String getOtherInfo() {
-        return otherInfo;
-    }
-
-    public void setOtherInfo(String otherInfo) {
-        this.otherInfo = otherInfo;
-    }
-
     @Override
     public String toString() {
         return "DateUtilBean{" +
                 "createdStamp='" + createdStamp + '\'' +
-                ", otherInfo='" + otherInfo + '\'' +
                 '}';
     }
 }

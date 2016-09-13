@@ -163,7 +163,7 @@ public class ResourceUtil {
      * 打开assets目录下的文件
      * @param ctx 上下文
      * @param filename 文件名称
-     * @return 返回文件流对象
+     * @return (测试通过)返回文件流对象
      * @throws IOException
      */
     public static InputStream open(Context ctx, String filename) throws IOException {

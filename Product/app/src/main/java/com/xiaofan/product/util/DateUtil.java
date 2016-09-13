@@ -28,7 +28,6 @@ public class DateUtil {
     /** 20120219150334 **/
     public static final String FORMAT_YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
     /** 20120219150334 **/
-    // TODO 测试
     public static final String FORMAT_YYYYMMDDHHMMSSSSS = "yyyyMMddHHmmssSSS";
     /** 20120219 **/
     public static final String FORMAT_YYYYMMDD = "yyyyMMdd";
@@ -47,7 +46,6 @@ public class DateUtil {
     /** 2012-02-19 15:03:34 */
     public static final String FORMAT_YYYY_LINE_MM_LINE_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
     /** 2012-02-19 15:03:34.876 */
-    // TODO 测试
     public static final String FORMAT_YYYY_LINE_MM_LINE_DD_HH_MM_SS_SSS = "yyyy-MM-dd HH:mm:ss.SSS";
     /** 12-12 */
     public static final String FORMAT_MM_LINE_DD = "MM-dd";
@@ -64,16 +62,20 @@ public class DateUtil {
     /** 2012-02-19 12时19分 */
     public static final String FORMAT_YYYY_LINE_MM_LINE_DD_HH_MM = "yyyy-MM-dd HH时mm分";
     /** yyyy年MM月dd日HH时mm分ss秒 */
-    //TODO 测试
-    public static final String FORMAT_YYYY_MM_DD_HHMMSS_WORD_ZH = "yyyy年MM月dd日HH时mm分ss秒";
+    public static final String FORMAT_YYYY_MM_DD_HHMMSS_WORD_ZH = "yyyy年MM月dd日 HH时mm分ss秒";
 
     /**
      * 仿微信朋友圈时间列表排序
      *      前提：1.后台返回的数据是排好序的
      *           2.含有时间的实体Bean必须继承自DateUtilBean
+     *      核心：多态
      * @param mDUBDatas 待排序的数据集合(实体中含有createdStamp时间字段)
+     * @param ctx 上下文
+     * @param format 时间格式
+     *
+     * @return (测试通过)
      */
-    public static void replaceRepeatTime(List<DateUtilBean> mDUBDatas,Context ctx) {
+    public static <T> void replaceRepeatTime(List<? extends DateUtilBean> mDUBDatas, Context ctx,String format) {
         if(mDUBDatas.size() > 0) {
             String tempString1 = "";
             String tempString2 = "";
@@ -82,7 +84,7 @@ public class DateUtil {
             int todayFlag = 0;
             //  先过滤今天昨天
             for (int i = 0; i < mDUBDatas.size(); i++) {
-                if ("今天".equals(DateUtil.isTodayOrYesterday(mDUBDatas.get(i).getCreatedStamp()))) {
+                if (ResourceUtil.getString(ctx,R.string.today).equals(DateUtil.isTodayOrYesterday(ctx,mDUBDatas.get(i).getCreatedStamp(),format))) {
                     todayFlag ++;
                     if (todayFlag > 1) {
                         mDUBDatas.get(i).setCreatedStamp("");
@@ -90,7 +92,7 @@ public class DateUtil {
                         tempString1 = mDUBDatas.get(i).getCreatedStamp();
                         mDUBDatas.get(i).setCreatedStamp(ResourceUtil.getString(ctx,R.string.today));
                     }
-                }else if("昨天".equals(DateUtil.isTodayOrYesterday(mDUBDatas.get(i).getCreatedStamp()))) {
+                }else if(ResourceUtil.getString(ctx,R.string.yesterday).equals(DateUtil.isTodayOrYesterday(ctx,mDUBDatas.get(i).getCreatedStamp(),format))) {
                     yesterdayFlag ++;
                     if (yesterdayFlag > 1) {
                         mDUBDatas.get(i).setCreatedStamp("");
@@ -112,13 +114,13 @@ public class DateUtil {
 
             for (int i = 0; i < mDUBDatas.size(); i++) {
                 if (!TextUtils.isEmpty(mDUBDatas.get(i).getCreatedStamp()) &&
-                        !"今天".equals(mDUBDatas.get(i).getCreatedStamp()) &&
-                        !"昨天".equals(mDUBDatas.get(i).getCreatedStamp())) {
+                        !ResourceUtil.getString(ctx,R.string.today).equals(mDUBDatas.get(i).getCreatedStamp()) &&
+                        !ResourceUtil.getString(ctx,R.string.yesterday).equals(mDUBDatas.get(i).getCreatedStamp())) {
                     if (TextUtils.isEmpty(tempString1)) {
                         // 没有今天和昨天字符
                         if ( !TextUtils.isEmpty(tempString2)) {
                             if (i < mDUBDatas.size()) {
-                                boolean isSame = DateUtil.compareDateByYMD(tempString2,mDUBDatas.get(i).getCreatedStamp());
+                                boolean isSame = DateUtil.compareDateByYMD(tempString2,mDUBDatas.get(i).getCreatedStamp(),format);
                                 if(!isSame) {
                                     tempString2 = mDUBDatas.get(i).getCreatedStamp();
                                 }else {
@@ -131,7 +133,7 @@ public class DateUtil {
 
                     }else {
                         // 有今天或者昨天字符
-                        boolean isSame = DateUtil.compareDateByYMD(tempString2,mDUBDatas.get(i).getCreatedStamp());
+                        boolean isSame = DateUtil.compareDateByYMD(tempString2,mDUBDatas.get(i).getCreatedStamp(),format);
                         if(!isSame) {
                             tempString2 = mDUBDatas.get(i).getCreatedStamp();
                         }else {
@@ -150,34 +152,35 @@ public class DateUtil {
     }
 
     /**
-     * @Description: 判断当前时间是否是昨天或者是今天
-     * @param time 要判断的时间
-     * @return
-     * @return: String 返回today，yesterday or null
+     * 判断指定日期是否为今天或者昨天
+     * @param ctx   上下文
+     * @param time  给定时间的字符串
+     * @param format 指定时间的格式
+     * @return 返回null 、昨天或者今天(测试通过)
      */
-    public static String isTodayOrYesterday(String time) {
-        String resultTime = "";
-        SimpleDateFormat sdf = new SimpleDateFormat(DateUtil.FORMAT_YYYY_MM_DD_HHMMSS_WORD_ZH);
-        Date d = null;
+    public static String isTodayOrYesterday(Context ctx,String time,String format) {
+        String resultTime = null;
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        Date date = null;
         Calendar calendar1 = null;
         Calendar calendar2 = null;
         try {
-            d = sdf.parse(time);
+            date = sdf.parse(time);
         } catch (ParseException e) {
             e.printStackTrace();
         } finally {
-            if(d != null) {
+            if(date != null) {
                 calendar1 = Calendar.getInstance();
                 calendar1.setTime(new Date(System.currentTimeMillis()));
                 calendar2 = Calendar.getInstance();
-                calendar2.setTime(d);
+                calendar2.setTime(date);
                 if (isTheSameDay(calendar1,calendar2)) {
-                    resultTime = "今天";
+                    resultTime = ResourceUtil.getString(ctx,R.string.today);
                 }else {
                     // 判断是否为昨天
                     calendar1.add(Calendar.DAY_OF_MONTH, -1);
                     if (isTheSameDay(calendar1,calendar2)) {
-                        resultTime = "昨天";
+                        resultTime = ResourceUtil.getString(ctx,R.string.yesterday);
                     }
                 }
             }
@@ -186,11 +189,38 @@ public class DateUtil {
     }
 
     /**
-     * @Description: 判断两个时间的年月日是否相等
-     * @param calendar1
-     * @param calendar2
-     * @return
-     * @return: boolean 相等则返回true 否则返回false
+     * 比较给定时间字符串是否为同一天
+     * @param srcDate   时间字符串1
+     * @param oldDate   时间字符串2
+     * @param format    时间格式
+     * @return true、false (测试通过)
+     */
+    public static boolean compareDateByYMD(String srcDate,String oldDate,String format) {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        Date d1 = null;
+        Date d2 = null;
+        Calendar calendar1 = Calendar.getInstance();
+        Calendar calendar2 = Calendar.getInstance();
+        try {
+            d1 = sdf.parse(srcDate);
+            d2 = sdf.parse(oldDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } finally {
+            if (d1 != null && d2 != null) {
+                calendar1.setTime(d1);
+                calendar2.setTime(d2);
+                return isTheSameDay(calendar1,calendar2);
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 判定给定的两个时间是否是同一天
+     * @param calendar1 时间1
+     * @param calendar2 时间2
+     * @return true、false（测试通过）
      */
     public static boolean isTheSameDay(Calendar calendar1,Calendar calendar2) {
         return calendar1.get(Calendar.YEAR) == calendar2.get(Calendar.YEAR) &&
@@ -199,30 +229,55 @@ public class DateUtil {
     }
 
     /**
-     * @Description: 根据年月日比较两个时间是否相等
-     * @param srcDate
-     * @param oldDate
-     * @return
-     * @return: boolean 如果两个时间的年月日都相等则返回true 否则返回false
+     * 将指定的时间对象转换成指定格式的时间字符串
+     * @param dateStr 原日期字符串
+     * @param fromFormat 原日期时间格式
+     * @param toFormat 转换后的时间格式
+     * @return 转换后的时间字符串、null(测试通过)
      */
-    public static boolean compareDateByYMD(String srcDate,String oldDate) {
-        SimpleDateFormat sdf = new SimpleDateFormat(DateUtil.FORMAT_YYYY_MM_DD_HHMMSS_WORD_ZH);
-        Date tempDate1 = null;
-        Date tempDate2 = null;
-        Calendar calendar1 = Calendar.getInstance();
-        Calendar calendar2 = Calendar.getInstance();
-        try {
-            tempDate1 = sdf.parse(srcDate);
-            tempDate2 = sdf.parse(oldDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } finally {
-            if (tempDate1 != null && tempDate2 != null) {
-                calendar1.setTime(tempDate1);
-                calendar2.setTime(tempDate2);
-                return isTheSameDay(calendar1,calendar2);
+    public static String getNewFormatDateString(String dateStr, String fromFormat, String toFormat) {
+        // 1、将原始日期字符串转换成Date对象
+        Date date = formatString2Date(dateStr, fromFormat);
+
+        // 2、将Date对象转换成目标样式字符串
+        return formatDate2String(date, toFormat);
+    }
+
+    /**
+     * 指定格式的时间串转换成Date对象
+     * @param dateStr 日期字符串
+     * @param format 日期格式
+     * @return 日期对象或者null(测试通过)
+     */
+    public static Date formatString2Date(String dateStr, String format) {
+        if (!TextUtils.isEmpty(dateStr)) {
+            try {
+                SimpleDateFormat sdf = new SimpleDateFormat(format);
+                return sdf.parse(dateStr);
+            } catch (Exception e) {
+                return null;
             }
         }
-        return false;
+        return null;
     }
+
+    /**
+     * 将日期转换成指定格式的字符串
+     * @param date 待转换的日期
+     * @param format 时间格式
+     * @return 返回时间字符串或者null(测试通过)
+     */
+    public static String formatDate2String(Date date, String format) {
+        if(date == null)
+            return null;
+        try {
+            SimpleDateFormat formatPattern = new SimpleDateFormat(format);
+            return formatPattern.format(date);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
+
 }
