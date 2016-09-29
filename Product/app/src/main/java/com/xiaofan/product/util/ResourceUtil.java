@@ -15,7 +15,7 @@ import java.io.InputStream;
 
 /**
  * @author: 范建海
- * @createTime: 2016/8/30 19:59
+ * @createTime: 2016/9/19 17:31
  * @className:  ResourceUtil
  * @Description: 获取本地资源的工具类
  */
@@ -171,14 +171,12 @@ public class ResourceUtil {
     }
 
     /**
-     * 获取配置文件
+     * 获取手机设备上的配置信息
      * @param ctx 上下文
      * @return
      */
     public Configuration getConfiguration(Context ctx) {
         return getResources(ctx).getConfiguration();
     }
-
-
 
 }

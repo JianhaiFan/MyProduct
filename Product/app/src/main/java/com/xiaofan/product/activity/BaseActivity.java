@@ -9,4 +9,5 @@ import android.support.v7.app.AppCompatActivity;
  * @Description: Activity页面的基类
  */
 public class BaseActivity extends AppCompatActivity {
+
 }

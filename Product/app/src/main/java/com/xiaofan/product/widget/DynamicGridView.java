@@ -1,71 +1,78 @@
 package com.xiaofan.product.widget;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.ScrollView;
 
 /**
  * @author: 范建海
  * @createTime: 2016/9/8 11:08
- * @className:  DynamicListView
- * @Description: 自定义ListView ListView高度不确定时，需要动态计算高度
+ * @className:  DynamicGridView
+ * @Description: 自定义GridView GridView高度不确定时，需要动态计算高度
  */
-public class DynamicListView extends ListView {
+public class DynamicGridView extends GridView {
 
-
-    public DynamicListView(Context context) {
+    public DynamicGridView(Context context) {
         super(context);
     }
 
-    public DynamicListView(Context context, AttributeSet attrs) {
+    public DynamicGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public DynamicListView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DynamicGridView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-
     @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, expandSpec);
     }
 
     /**
-     * 动态计算ListView的高度
-     * @param listView 待测控件
+     * 计算GridView的高度
+     * @param gridView
+     * @param columnCount GridView的列数
+     * @param verticalSpacing 为了需要兼容到API16以下的版本，如果有垂直间距，需要传递一个垂直间距
      */
-    public void fixListViewHeight(ListView listView) {
+    public void fixGridViewHeight(GridView gridView, int columnCount,int verticalSpacing){
         // 如果没有设置数据适配器，则ListView没有子项，返回。
-        ListAdapter listAdapter = listView.getAdapter();
+        ListAdapter listAdapter = gridView.getAdapter();
+
         int totalHeight = 0;
         if (listAdapter == null) {
             return;
         }
         for (int i = 0, len = listAdapter.getCount(); i < len; i++) {
-            View listViewItem = listAdapter.getView(i , null, listView);
+            View listViewItem = listAdapter.getView(i , null, gridView);
             // 计算子项View 的宽高
-            int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+            int desiredWidth = View.MeasureSpec.makeMeasureSpec(gridView.getWidth(), View.MeasureSpec.AT_MOST);
             listViewItem.measure(desiredWidth, 0);
             // 计算所有子项的高度和
             totalHeight += listViewItem.getMeasuredHeight();
         }
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        totalHeight = totalHeight/columnCount;
+        ViewGroup.LayoutParams params = gridView.getLayoutParams();
         // listView.getDividerHeight()获取子项间分隔符的高度
         // params.height设置ListView完全显示需要的高度
-        params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+            // 版本兼容16
+            params.height = totalHeight+ (verticalSpacing * (listAdapter.getCount()/columnCount - 1));
+        }else {
+            params.height = totalHeight+ (gridView.getVerticalSpacing() * (listAdapter.getCount() / columnCount - 1));
+        }
+        gridView.setLayoutParams(params);
     }
 
     /**
-     * ScrollView和ListView嵌套，允许里面的ListView滑动
+     * ScrollView和GridView嵌套，允许里面的GridView滑动
      * @param sv
      */
     public void setOnSelfTouchListener(final ScrollView sv) {
@@ -89,6 +96,5 @@ public class DynamicListView extends ListView {
             }
         });
     }
-
 
 }
