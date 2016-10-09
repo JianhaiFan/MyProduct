@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xiaofan.product.adaptation.percent.PercentFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        app:layout_marginRightPercent="5%w"
+        android:contentDescription="@null"
+        android:src="@drawable/img_pop_top_triangle" />
+
+    <com.xiaofan.product.adaptation.percent.PercentLinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="end"
+        app:layout_heightPercent="42%w"
+        app:layout_marginRightPercent="2%w"
+        app:layout_marginTopPercent="3%w"
+        app:layout_widthPercent="38%w"
+        android:background="@drawable/img_pop_bg"
+        android:orientation="vertical" >
+
+        <com.xiaofan.product.adaptation.percent.PercentLinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/ll_add_friends"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add_friends_update"
+                android:drawablePadding="@dimen/yms2.0dimens2.0dp"
+                android:drawableStart="@drawable/ic_add_friends_update"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/font_size_large"
+                android:text="申请编辑" />
+        </com.xiaofan.product.adaptation.percent.PercentLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            app:layout_marginLeftPercent="10%w"
+            app:layout_marginRightPercent="10%w"
+            android:background="#5C5B5D" />
+
+        <com.xiaofan.product.adaptation.percent.PercentLinearLayout
+            android:id="@+id/tv_share_case"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add_friends_update"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_add_friends_update"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/font_size_large"
+                android:text="发布文章" />
+        </com.xiaofan.product.adaptation.percent.PercentLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            app:layout_marginLeftPercent="10%w"
+            app:layout_marginRightPercent="10%w"
+            android:background="#5C5B5D" />
+
+        <com.xiaofan.product.adaptation.percent.PercentLinearLayout
+            android:id="@+id/tv_share_topic"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add_friends_update"
+                android:drawablePadding="10dp"
+                android:drawableStart="@drawable/ic_add_friends_update"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/font_size_large"
+                android:text="申请编委" />
+        </com.xiaofan.product.adaptation.percent.PercentLinearLayout>
+    </com.xiaofan.product.adaptation.percent.PercentLinearLayout>
+
+</com.xiaofan.product.adaptation.percent.PercentFrameLayout>

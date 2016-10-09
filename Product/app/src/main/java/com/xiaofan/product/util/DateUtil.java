@@ -515,31 +515,4 @@ public class DateUtil {
         return sBuffer.toString();
     }
 
-
-    @Deprecated
-    public static String getTimeForLine(String time) {
-//        // 根据日期情况显示的指定格式的日期
-//        String newTime;
-//        //截取当前年的时间格式2012  和当前 日期的时间格式
-//        String currentDay = getCurrentTimeSpecifyFormat(FORMAT_YYYYMMDD);
-//        //昨天日期格式2012/02/19
-//        String yesDate = getYesterdaySpecifyFormat(DateUtil.FORMAT_YYYYMMDD);
-//        //先转换格式：1902  2月19
-//        String timeForma = getNewFormatDateString(time, FORMAT_YYYY_MM_DDHH_MM_SS_WORD_ZH, FORMAT_MM_DD1);
-//        if (currentDay.contains(timeForma)) {
-//            newTime = "今天";
-//        } else if (yesDate.contains(timeForma)) {
-//            newTime = "昨天";
-//        } else { // 0219
-//            String a = timeForma.substring(0, 2);
-//            if ("10".equals(a) || "11".equals(a) || "12".equals(a)) {
-//                newTime = timeForma.substring(2, 4) + a + "月";
-//            } else {
-//                newTime = timeForma.substring(2, 4) + timeForma.substring(1, 2) + "月";
-//            }
-//        }
-//        return newTime;
-        return null;
-    }
-
 }

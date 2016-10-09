@@ -2002,17 +2002,17 @@
 <dimen name="yms1000.5dimens1000.5dp">760.38dp</dimen>
 
 <!-- 微小字体 -->
-<dimen name="font_size_tiny">7.5sp</dimen>
+<dimen name="font_size_tiny">4.125sp</dimen>
 <!-- 小字体 -->
-<dimen name="font_size_small">9sp</dimen>
+<dimen name="font_size_small">4.5sp</dimen>
 <!-- 正常字体 -->
-<dimen name="font_size_normal">10.5sp</dimen>
+<dimen name="font_size_normal">4.875sp</dimen>
 <!-- 正常偏高字体 -->
-<dimen name="font_size_normal_high">12sp</dimen>
+<dimen name="font_size_normal_high">5.25sp</dimen>
 <!-- 大号字体 -->
-<dimen name="font_size_large">13.5sp</dimen>
+<dimen name="font_size_large">5.625sp</dimen>
 <!-- 超大号字体 -->
-<dimen name="font_size_large_high">15sp</dimen>
+<dimen name="font_size_large_high">6sp</dimen>
 <!-- 特大号字体 -->
-<dimen name="font_size_xlarge_high">16.5sp</dimen>
+<dimen name="font_size_xlarge_high">6.375sp</dimen>
 </resources>
