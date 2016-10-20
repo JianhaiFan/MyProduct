@@ -145,8 +145,8 @@ public class ResourceUtil {
      * @param pxValue 像素值
      * @return (测试通过)
      */
-    public static float px2dip(Context ctx, int pxValue) {
-        return ((float) pxValue * 160) / getDensityDpi(ctx);
+    public static float px2dip(Context ctx, float pxValue) {
+        return (pxValue * 160) / getDensityDpi(ctx);
     }
 
     /**

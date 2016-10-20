@@ -4,24 +4,24 @@
     <item android:state_pressed="true">
         <shape>
             <corners android:radius="@dimen/yms4.0dimens4.0dp" />
-            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/colorGrayDivider" />
-            <solid android:color="@color/colorGreen"></solid>
+            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/color_gray_divider" />
+            <solid android:color="@color/color_green"></solid>
         </shape>
     </item>
     <!--选中时显示的颜色-->
     <item android:state_selected="true">
         <shape>
             <corners android:radius="@dimen/yms4.0dimens4.0dp" />
-            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/colorGrayDivider" />
-            <solid android:color="@color/colorGreen"></solid>
+            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/color_gray_divider" />
+            <solid android:color="@color/color_green"></solid>
         </shape>
     </item>
     <!--默认显示的颜色-->
     <item>
         <shape>
             <corners android:radius="@dimen/yms4.0dimens4.0dp" />
-            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/colorRed" />
-            <solid android:color="@color/colorGreenNormal"></solid>
+            <stroke android:width="@dimen/yms.5dimens.5dp" android:color="@color/color_red" />
+            <solid android:color="@color/color_green_normal"></solid>
         </shape>
     </item>
 

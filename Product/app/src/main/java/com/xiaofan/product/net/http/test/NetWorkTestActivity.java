@@ -1,21 +1,18 @@
-package com.xiaofan.product.activity;
+package com.xiaofan.product.net.http.test;
 
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.xiaofan.product.R;
+import com.xiaofan.product.activity.AbstractBaseActivity;
 import com.xiaofan.product.net.http.OkHttpUtil;
-import com.xiaofan.product.net.http.test.TestBean;
 import com.xiaofan.product.util.LogUtil;
-import com.xiaofan.product.util.ResourceUtil;
 import com.zhy.http.okhttp.callback.Callback;
 
 import java.util.HashMap;
@@ -25,34 +22,49 @@ import okhttp3.Call;
 import okhttp3.Request;
 import okhttp3.Response;
 
-
-public class MainActivity extends AbstractBaseActivity {
-
-
-    private ProgressBar pb_loading;
-    private ImageView iv_title_bar_plus;
-    private ImageView iv_title_bar_search;
-    private LinearLayout pll_title_bar_root;
-    private TextView tv_title_bar_title;
+/**
+ * @author: 范建海
+ * @createTime: 2016/10/20 20:04
+ * @className:  NetWorkTestActivity
+ * @description: 网络测试页面
+ * @changed by:
+ */
+public class NetWorkTestActivity extends AbstractBaseActivity {
+    // 上下文
     private Context mContext;
-
+    // 展示文字
+    private TextView tv_text;
+    // 展示图片
+    private ImageView iv_img;
+    // 加载数据进度条
+    private ProgressBar pb_loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test_network);
 
-        mContext = MainActivity.this;
+        mContext = NetWorkTestActivity.this;
+
+        tv_text = (TextView) findViewById(R.id.tv_text);
+        iv_img = (ImageView) findViewById(R.id.iv_img);
         pb_loading = (ProgressBar) findViewById(R.id.pb_loading);
-
-
-//        initData();
-
 
     }
 
-    public void onLogin(View view) {
+    /**
+     * 测试 Get
+     * @param view
+     */
+    public void onGet(View view) {
 
+    }
+
+    /**
+     * 测试 Post
+     * @param view
+     */
+    public void onPost(View view) {
         Map<String,String> params = new HashMap<>();
         params.put("userLoginId", "18210836561");
         params.put("oldPassword", "111111");
@@ -97,54 +109,44 @@ public class MainActivity extends AbstractBaseActivity {
         });
     }
 
-    public void initData() {
-        iv_title_bar_plus = (ImageView) findViewById(R.id.iv_title_bar_plus);
-        iv_title_bar_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LogUtil.e("iv_title_bar_plus...");
+    /**
+     * 测试 上传Json
+     * @param view
+     */
+    public void onJson(View view) {
 
-            }
-        });
-
-        iv_title_bar_search = (ImageView) findViewById(R.id.iv_title_bar_search);
-        iv_title_bar_search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LogUtil.e("iv_title_bar_search...");
-            }
-        });
-
-        pll_title_bar_root = (LinearLayout) findViewById(R.id.pll_title_bar_root);
-
-        LogUtil.e("====================菜单===================\n");
-        LogUtil.e("屏幕密度等级:" + ResourceUtil.getDensity(mContext));
-        LogUtil.e("====================菜单===================\n");
-        LogUtil.e("逻辑像素密度:" + ResourceUtil.getDensityDpi(mContext));
-        LogUtil.e("====================菜单===================\n");
-        LogUtil.e("标题栏的高度:" + pll_title_bar_root.getMeasuredHeight());
-        LogUtil.e("====================菜单===================\n");
-        LogUtil.e("图片的边距差:" + iv_title_bar_plus.getMeasuredHeight());
-
-        tv_title_bar_title = (TextView) findViewById(R.id.tv_title_bar_title);
-
-        LogUtil.e("标题大小：" + tv_title_bar_title.getTextSize());
     }
+
+    /**
+     * 测试 上传文件
+     * @param view
+     */
+    public void onUpload(View view) {
+
+    }
+
+    /**
+     * 测试 下载文件
+     * @param view
+     */
+    public void onDownload(View view) {
+
+    }
+
+    /**
+     * 测试 Cookie/Session
+     * @param view
+     */
+    public void onOther(View view) {
+
+    }
+
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         // 取消请求
         OkHttpUtil.cancel(mContext);
-    }
-
-
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            finish();
-        }
-        return super.onKeyDown(keyCode, event);
     }
 }

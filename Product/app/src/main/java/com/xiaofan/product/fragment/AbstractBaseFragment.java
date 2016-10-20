@@ -1,7 +1,7 @@
 package com.xiaofan.product.fragment;
 
 
-import com.xiaofan.product.activity.BaseActivity;
+import com.xiaofan.product.activity.AbstractBaseActivity;
 
 /**
  * @author: 范建海
@@ -9,6 +9,6 @@ import com.xiaofan.product.activity.BaseActivity;
  * @className:  BaseFragment
  * @Description: Fragment的基类
  */
-public class BaseFragment extends BaseActivity {
+public abstract class AbstractBaseFragment extends AbstractBaseActivity {
 
 }

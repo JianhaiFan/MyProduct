@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 
+
 /**
  * @author: 范建海
  * @createTime: 2016/8/24 20:12
@@ -23,7 +24,7 @@ public class MyApplication extends Application {
 
         OkHttpClient okHttpclient = new OkHttpClient.Builder()
                                                     .addInterceptor(new LoggerInterceptor("TAG"))
-                                                    .connectTimeout(10000L,TimeUnit.MILLISECONDS)
+                                                    .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                                                     .readTimeout(10000L,TimeUnit.MILLISECONDS)
                                                     .build();
         OkHttpUtils.initClient(okHttpclient);

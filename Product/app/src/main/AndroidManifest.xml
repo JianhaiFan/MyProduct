@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xiaofan.product">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
     <application
         android:name=".application.MyApplication"
         android:allowBackup="true"
@@ -10,14 +15,20 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar"
         >
-
-        <activity android:name=".activity.MainActivity">
+        <!-- 主页面 -->
+        <activity
+            android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 网络测试页面 -->
+        <activity
+            android:name="com.xiaofan.product.net.http.test.NetWorkTestActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
     </application>
 
 </manifest>

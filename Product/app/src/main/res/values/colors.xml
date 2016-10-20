@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <!-- 自定义颜色 -->
-    <!-- 红色 -->
-    <color name="colorRed">#FF0000</color>
-    <!-- 绿色 -->
-    <color name="colorGreen">#00FF00</color>
-    <color name="colorGreenNormal">#DF09BB07</color>
+
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_black">#000000</color>
+    <color name="color_red">#FF0000</color>
+    <color name="color_green">#00FF00</color>
+    <color name="color_green_normal">#DF09BB07</color>
     <!-- 灰色 -->
-    <color name="colorGrayDivider">#DCDCDC</color>
+    <color name="color_gray_divider">#DCDCDC</color>
+
+    <!-- 应用的主题背景色 -->
+    <color name="color_app_bg">#EBEBEB</color>
+    <color name="color_title_bar_bg">#2E2D33</color>
+    <color name="color_title_bar_search_pressed">#339E9E9E</color>
+    <color name="color_title_bar_plus_pressed">#f0252525</color>
 </resources>
