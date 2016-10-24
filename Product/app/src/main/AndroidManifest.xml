@@ -8,13 +8,27 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
     <application
-        android:name=".application.MyApplication"
+        android:name=".application.CustomApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar"
         >
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="580c6285aed17913f400016f">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="3967e5eeec7bc87449bb0185f5da65ce">
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Channel ID" >
+        </meta-data>
+
         <!-- 主页面 -->
         <activity
             android:name=".activity.MainActivity">
@@ -28,6 +42,9 @@
             android:name="com.xiaofan.product.net.http.test.NetWorkTestActivity"
             android:screenOrientation="portrait">
         </activity>
+
+        <!-- 友盟消息完全自定义服务 -->
+        <service android:name="com.xiaofan.product.service.CustomPushIntentService"/>
 
     </application>
 

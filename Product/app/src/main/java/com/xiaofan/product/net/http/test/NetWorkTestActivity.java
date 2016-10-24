@@ -8,13 +8,17 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.xiaofan.product.R;
 import com.xiaofan.product.activity.AbstractBaseActivity;
 import com.xiaofan.product.net.http.OkHttpUtil;
+import com.xiaofan.product.util.GsonUtil;
+import com.xiaofan.product.util.LoaderImageUtil;
 import com.xiaofan.product.util.LogUtil;
 import com.zhy.http.okhttp.callback.Callback;
+import com.zhy.http.okhttp.callback.FileCallBack;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,7 +61,49 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
      * @param view
      */
     public void onGet(View view) {
+        Map<String,String> params = new HashMap<>();
+        params.put("userLoginId", "18210836561");
+        params.put("oldPassword", "111111");
+        params.put("newPassword", "222222");
 
+        OkHttpUtil.get(mContext,"http://192.168.1.24:9090/sysCommon/control/restful/ajaxUpdatePassword", params, new Callback<TestGetAndPostBean>() {
+
+            @Override
+            public void onBefore(Request request, int id) {
+                pb_loading.setVisibility(View.VISIBLE);
+                tv_text.setVisibility(View.VISIBLE);
+                iv_img.setVisibility(View.GONE);
+            }
+
+            @Override
+            public TestGetAndPostBean parseNetworkResponse(Response response, int id) throws Exception {
+                // 服务器响应返回的Json串，注意，用临时变量接收一下，再做相应的操作，方法( response.body().string() )只能被调用一次，否则会返回空
+                String body = response.body().string();
+                TestGetAndPostBean testBean = GsonUtil.json2Object(body,new TypeToken<TestGetAndPostBean>(){});
+                return testBean;
+            }
+
+            @Override
+            public void onResponse(TestGetAndPostBean testBean, int id) {
+
+                // 对实体Bean进行操作之前，要进行判空处理
+                if (testBean != null) {
+                    LogUtil.e("TestBean:" + testBean.toString());
+                    tv_text.setText("GET请求:" + testBean.toString());
+                }
+
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                tv_text.setText("GET请求:" + "异常-->" + e.toString());
+            }
+
+            @Override
+            public void onAfter(int id) {
+                pb_loading.setVisibility(View.GONE);
+            }
+        });
     }
 
     /**
@@ -67,45 +113,46 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
     public void onPost(View view) {
         Map<String,String> params = new HashMap<>();
         params.put("userLoginId", "18210836561");
-        params.put("oldPassword", "111111");
-        params.put("newPassword", "222222");
+        params.put("oldPassword", "222222");
+        params.put("newPassword", "111111");
 
-        OkHttpUtil.post(this,"http://192.168.1.24:9090/sysCommon/control/restful/ajaxUpdatePassword", params, new Callback<TestBean>() {
-
-            @Override
-            public void onBefore(Request request, int id) {}
+        OkHttpUtil.post(mContext,"http://192.168.1.24:9090/sysCommon/control/restful/ajaxUpdatePassword", params, new Callback<TestGetAndPostBean>() {
 
             @Override
-            public void inProgress(float progress, long total, int id) {}
+            public void onBefore(Request request, int id) {
+                pb_loading.setVisibility(View.VISIBLE);
+                tv_text.setVisibility(View.VISIBLE);
+                iv_img.setVisibility(View.GONE);
+            }
 
             @Override
-            public TestBean parseNetworkResponse(Response response, int id) throws Exception {
-
+            public TestGetAndPostBean parseNetworkResponse(Response response, int id) throws Exception {
                 // 服务器响应返回的Json串，注意，用临时变量接收一下，再做相应的操作，方法( response.body().string() )只能被调用一次，否则会返回空
                 String body = response.body().string();
-                TestBean testBean = new Gson().fromJson(body, TestBean.class);
+                TestGetAndPostBean testBean = GsonUtil.json2Object(body,new TypeToken<TestGetAndPostBean>(){});
                 return testBean;
             }
 
             @Override
-            public void onResponse(TestBean testBean, int id) {
+            public void onResponse(TestGetAndPostBean testBean, int id) {
 
                 // 对实体Bean进行操作之前，要进行判空处理
                 if (testBean != null) {
                     LogUtil.e("TestBean:" + testBean.toString());
+                    tv_text.setText("POST请求:" + testBean.toString());
                 }
-                pb_loading.setVisibility(View.GONE);
 
             }
 
             @Override
             public void onError(Call call, Exception e, int id) {
-                pb_loading.setVisibility(View.GONE);
-                call.cancel();
+                tv_text.setText("POST请求:" + "异常-->" + e.toString());
             }
 
             @Override
-            public void onAfter(int id) {}
+            public void onAfter(int id) {
+                pb_loading.setVisibility(View.GONE);
+            }
         });
     }
 
@@ -122,7 +169,58 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
      * @param view
      */
     public void onUpload(View view) {
+        Map<String,String> params = new HashMap<>();
+        params.put("from","OSSFileLocation_03");
 
+        Map<String,File> files = new HashMap<>();
+        files.put("small_1mmexport1477283052348_1.jpg",new File("/storage/emulated/0/PicturesPictic/small_1mmexport1477283052348_1.jpg"));
+
+        OkHttpUtil.postFiles(mContext,"http://192.168.1.24:9090/sysCommon/control/restful/ajaxImportPicUrl",params,"uploadedFileList",files,new Callback<TestUploadBean>() {
+
+            @Override
+            public void onBefore(Request request, int id) {
+                pb_loading.setVisibility(View.VISIBLE);
+                tv_text.setVisibility(View.GONE);
+                iv_img.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public TestUploadBean parseNetworkResponse(Response response, int id) throws Exception {
+                // 服务器响应返回的Json串，注意，用临时变量接收一下，再做相应的操作，方法( response.body().string() )只能被调用一次，否则会返回空
+                String body = response.body().string();
+                TestUploadBean uploadBean = GsonUtil.json2Object(body,new TypeToken<TestUploadBean>(){});
+                return uploadBean;
+            }
+
+            @Override
+            public void inProgress(float progress, long total, int id) {
+                LogUtil.e("========== inProgress ===========");
+                LogUtil.e("progress:" + progress + ",total:" + total);
+                LogUtil.e("========== inProgress ===========");
+            }
+
+            @Override
+            public void onResponse(TestUploadBean uploadBean, int id) {
+                if (uploadBean != null) {
+                    if ("1".equals(uploadBean.getStatus())) {
+                        LoaderImageUtil.innerDisplay(uploadBean.getOutputList().get(0),iv_img,null);
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                tv_text.setVisibility(View.VISIBLE);
+                iv_img.setVisibility(View.GONE);
+                tv_text.setText("上传文件:" + "异常-->" + e.toString());
+
+            }
+
+            @Override
+            public void onAfter(int id) {
+                pb_loading.setVisibility(View.GONE);
+            }
+        });
     }
 
     /**
@@ -130,7 +228,40 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
      * @param view
      */
     public void onDownload(View view) {
+        OkHttpUtil.downloadFile(mContext, "http://yxck.img-cn-beijing.aliyuncs.com/headportrait/peron/c42923ae-1f1f-4eb6-8263-8d3657da4565.jpg", new FileCallBack("/storage/emulated/0/我的下载/浏览器图片/","xiaofan.jpg") {
+            @Override
+            public void onBefore(Request request, int id) {
+                pb_loading.setVisibility(View.VISIBLE);
+                tv_text.setVisibility(View.GONE);
+                iv_img.setVisibility(View.VISIBLE);
+            }
 
+            @Override
+            public void onResponse(File file, int id) {
+                if (file != null) {
+                    LoaderImageUtil.displayFromSDCard(file.getAbsolutePath(),iv_img);
+                }
+            }
+
+            @Override
+            public void inProgress(float progress, long total, int id) {
+                LogUtil.e("========== onDownload inProgress ===========");
+                LogUtil.e("progress:" + progress + ",total:" + total);
+                LogUtil.e("========== onDownload inProgress ===========");
+            }
+
+            @Override
+            public void onError(Call call, Exception e, int id) {
+                LogUtil.e("========== onError ===========");
+                LogUtil.e("Exception:" + e.toString());
+                LogUtil.e("========== onError ===========");
+            }
+
+            @Override
+            public void onAfter(int id) {
+                pb_loading.setVisibility(View.GONE);
+            }
+        });
     }
 
     /**

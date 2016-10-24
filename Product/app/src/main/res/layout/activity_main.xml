@@ -21,14 +21,6 @@
         android:text="登录"
         android:onClick="onLogin"/>
 
-    <ProgressBar
-        android:id="@+id/pb_loading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/yms5.0dimens5.0dp"
-        />
 
 
 

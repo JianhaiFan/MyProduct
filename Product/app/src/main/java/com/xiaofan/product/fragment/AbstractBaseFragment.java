@@ -1,6 +1,8 @@
 package com.xiaofan.product.fragment;
 
 
+import android.os.Bundle;
+
 import com.xiaofan.product.activity.AbstractBaseActivity;
 
 /**
@@ -11,4 +13,8 @@ import com.xiaofan.product.activity.AbstractBaseActivity;
  */
 public abstract class AbstractBaseFragment extends AbstractBaseActivity {
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }
