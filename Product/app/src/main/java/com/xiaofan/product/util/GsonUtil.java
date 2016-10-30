@@ -40,7 +40,7 @@ public class GsonUtil {
     }
 
     /**
-     * 实体转换成Json串
+     * 实体(对象/集合)转换成Json串
      * @param obj
      * @return
      */

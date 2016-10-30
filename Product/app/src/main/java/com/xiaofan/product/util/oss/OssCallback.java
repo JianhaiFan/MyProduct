@@ -1,5 +1,7 @@
 package com.xiaofan.product.util.oss;
 
+import com.alibaba.sdk.android.oss.ClientException;
+import com.alibaba.sdk.android.oss.ServiceException;
 import com.alibaba.sdk.android.oss.model.PutObjectRequest;
 import com.alibaba.sdk.android.oss.model.PutObjectResult;
 
@@ -11,25 +13,26 @@ import com.alibaba.sdk.android.oss.model.PutObjectResult;
  * @changed by:
  */
 public interface OssCallback {
-
+    // 视频，音频路径的前缀
+    public static final String OSS_ENDPOINT = "http://yxck.oss-cn-beijing.aliyuncs.com/";
+    // 图片的路径的前缀
+    public static final String OSS_ENDPOINT_IMG = "http://yxck.img-cn-beijing.aliyuncs.com/";
     /**
      * 阿里云对象存储成功的本地回调
-     * @param request
-     * @param result
+     * @param objectKey 上传对象的ObjectKey（唯一标志）
+     * @param filePath  上传对象的本地路径
      */
-    public abstract void success(PutObjectRequest request, PutObjectResult result);
+    public abstract void success(String objectKey, String filePath);
 
     /**
      * 阿里云对象存储失败的本地回调
-     * @param request
      */
-    public abstract void error(PutObjectRequest request);
+    public abstract void error();
 
     /**
      * 阿里云对象存储过程中的本地回调
-     * @param request
      * @param currentSize 存储过程中，当前文件已经存储的大小
      * @param totalSize  存储文件的大小
      */
-    public void process(PutObjectRequest request, long currentSize, long totalSize) ;
+    public void process(long currentSize, long totalSize) ;
 }

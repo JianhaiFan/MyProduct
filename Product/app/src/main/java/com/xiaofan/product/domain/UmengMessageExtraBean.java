@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @description: 友盟消息扩展消息
  * @changed by:
  */
-public class MessageExtraBean implements Serializable {
+public class UmengMessageExtraBean implements Serializable {
     // 消息类型
     private String messageType;
     // 附加内容
@@ -17,9 +17,9 @@ public class MessageExtraBean implements Serializable {
     // 是否要通知栏提示
     private String isSilent;
 
-    public MessageExtraBean() {}
+    public UmengMessageExtraBean() {}
 
-    public MessageExtraBean(String messageType, String map, String isSilent) {
+    public UmengMessageExtraBean(String messageType, String map, String isSilent) {
         this.messageType = messageType;
         this.map = map;
         this.isSilent = isSilent;
@@ -51,7 +51,7 @@ public class MessageExtraBean implements Serializable {
 
     @Override
     public String toString() {
-        return "MessageExtraBean{" +
+        return "UmengMessageExtraBean{" +
                 "messageType='" + messageType + '\'' +
                 ", map='" + map + '\'' +
                 ", isSilent='" + isSilent + '\'' +

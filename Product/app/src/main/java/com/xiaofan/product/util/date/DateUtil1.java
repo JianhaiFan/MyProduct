@@ -1,4 +1,4 @@
-package com.xiaofan.product.util;
+package com.xiaofan.product.util.date;
 
 import android.text.TextUtils;
 
@@ -16,10 +16,10 @@ import java.util.List;
  * @author: 范建海
  * @createTime: 2016/9/27 20:43
  * @className:  DateUtil
- * @description: 时间处理工具类
+ * @description: 时间处理工具类1
  * @changed by:
  */
-public class DateUtil {
+public class DateUtil1 {
     // 12(月)
     public static final String FORMAT_MM = "MM";
     // 19(日)
@@ -87,7 +87,7 @@ public class DateUtil {
      *           2.含有时间的实体Bean必须继承自 {@link com.xiaofan.product.domain.AbstractDateUtilBean }
      *           3.待排序的实体Bean必须包含待排序字段 createdStamp，否则不能调用此方法
      * @param entityList 待排序的数据集合
-     * @param format 时间格式 {@link com.xiaofan.product.util.DateUtil }
+     * @param format 时间格式 {@link DateUtil1 }
      * @return 排好序的集合的时间字段的取值范围{具体时间，""}
      */
     public static void replaceRepeatTime(List<? extends AbstractDateUtilBean> entityList, String format) {
@@ -96,7 +96,7 @@ public class DateUtil {
 
             for (int i = 1; i < entityList.size(); i++) {
                 if (!TextUtils.isEmpty(entityList.get(i).getCreatedStamp())) {
-                    boolean isSame = DateUtil.isTheSameDay(tempString1,format,entityList.get(i).getCreatedStamp(),format);
+                    boolean isSame = DateUtil1.isTheSameDay(tempString1,format,entityList.get(i).getCreatedStamp(),format);
                     if(!isSame) {
                         tempString1 = entityList.get(i).getCreatedStamp();
                     }else {
@@ -112,7 +112,7 @@ public class DateUtil {
     /**
      * 如果给定格式的日期是今天或者昨天，则转换成今天昨天字样，否则返回 null
      * @param time  给定时间的字符串
-     * @param format 指定时间的格式 {@link com.xiaofan.product.util.DateUtil }
+     * @param format 指定时间的格式 {@link DateUtil1 }
      * @return 返回 null 、"昨天" 或者 "今天"
      */
     public static String formatDate2TodayOrYesterday(String time,String format) {
@@ -279,7 +279,7 @@ public class DateUtil {
     /**
      * 判断当前时间字符串是否为今年
      * @param timeStr 带比较的字符串
-     * @param format 当前时间字符串的时间格式 {@link com.xiaofan.product.util.DateUtil }
+     * @param format 当前时间字符串的时间格式 {@link DateUtil1 }
      * @return 如果给定时间字符串是当年返回true，否则返回false
      */
     public static boolean isThisYear(String timeStr,String format) {
@@ -303,7 +303,7 @@ public class DateUtil {
      * 仿照微信朋友圈时间格式展示时间
      * @param timeStr 时间字符串
      * @param format 时间字符串对应的而时间字符串格式
-     *               {@link com.xiaofan.product.util.DateUtil }
+     *               {@link DateUtil1 }
      * @return 返回时间字符串的格式
      *                      今天 HH:mm
      *                      昨天 昨天
@@ -319,16 +319,16 @@ public class DateUtil {
 
             if (TAG_TODAY.equals(formatDate2TodayOrYesterday(timeStr,format))) {
                 // 今天
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_HH_MM));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_HH_MM));
             } else if (TAG_YESTERDAY.equals(formatDate2TodayOrYesterday(timeStr,format))) {
                 // 昨天
                 sBuffer.append(TAG_YESTERDAY);
             } else if (isThisYear(timeStr,format)) {
                 //今年的其他日子
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_MM_SLASH_DD));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_MM_SLASH_DD));
             } else {
                 // 跨年
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_YYYY_SLASH_MM_SLASH_DD));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_YYYY_SLASH_MM_SLASH_DD));
             }
         }
         return sBuffer.toString();
@@ -352,13 +352,13 @@ public class DateUtil {
 
             if (TAG_TODAY.equals(formatDate2TodayOrYesterday(timeStr,format))) {
                 // 今天
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_HH_MM));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_HH_MM));
             } else if (isThisYear(timeStr,format)) {
                 //今年的其他日子
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_MM_SLASH_DD_HH_MM));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_MM_SLASH_DD_HH_MM));
             } else {
                 // 跨年
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_YYYY_SLASH_MM_SLASH_DD_HH_MM));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_YYYY_SLASH_MM_SLASH_DD_HH_MM));
             }
         }
         return sBuffer.toString();
@@ -384,7 +384,7 @@ public class DateUtil {
 
             if (TAG_TODAY.equals(formatDate2TodayOrYesterday(timeStr,format))) {
                 // 今天 HH:mm
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_HH_MM));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_HH_MM));
             } else if(TAG_YESTERDAY.equals(formatDate2TodayOrYesterday(timeStr,format))) {
                 // 昨天 昨天
                 sBuffer.append(TAG_YESTERDAY);
@@ -393,10 +393,10 @@ public class DateUtil {
                 sBuffer.append(getWeekOfDate(timeStr,format));
             }else if (isThisYear(timeStr,format)) {
                 //今年（除了一周内）的其他日子 MM/dd
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_MM_SLASH_DD));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_MM_SLASH_DD));
             } else {
                 // 跨年 yyyy/MM/dd
-                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil.FORMAT_YYYY_SLASH_MM_SLASH_DD));
+                sBuffer.append(getNewFormatDateString(timeStr, format, DateUtil1.FORMAT_YYYY_SLASH_MM_SLASH_DD));
             }
         }
         return sBuffer.toString();
@@ -420,9 +420,9 @@ public class DateUtil {
             // 时间戳对应日期对象
             Date d = new Date(timeStamp);
             // 日期对应的时间字符串
-            String timeStr = DateUtil.formatDate2String(d,DateUtil.FORMAT_YYYY_MM_DDHH_MM_SS_WORD_ZH);
+            String timeStr = DateUtil1.formatDate2String(d,DateUtil1.FORMAT_YYYY_MM_DDHH_MM_SS_WORD_ZH);
 
-            resultTime = formatTimeForHX(timeStr,DateUtil.FORMAT_YYYY_MM_DDHH_MM_SS_WORD_ZH);
+            resultTime = formatTimeForHX(timeStr,DateUtil1.FORMAT_YYYY_MM_DDHH_MM_SS_WORD_ZH);
         }
         return resultTime;
     }
@@ -430,7 +430,7 @@ public class DateUtil {
     /**
      * 判断给定格式的时间字符串是否在一周(从今天向前推一周)之内
      * @param timeStr 待测时间字符串
-     * @param format  待测时间字符串格式 {@link com.xiaofan.product.util.DateUtil }
+     * @param format  待测时间字符串格式 {@link DateUtil1 }
      * @return 如果给定时间在一周之内返回true,否则返回false
      */
     public static boolean isWithinAWeek(String timeStr,String format) {
@@ -477,7 +477,7 @@ public class DateUtil {
     /**
      * 仿微信朋友圈个人空间格式化指定格式的时间字符串
      * @param timeStr 原时间字符串
-     * @param format 指定的时间字符串格式 {@link com.xiaofan.product.util.DateUtil }
+     * @param format 指定的时间字符串格式 {@link DateUtil1 }
      * @return 返回的结果格式
      *                  13*4 (13号4月)
      *                  今天

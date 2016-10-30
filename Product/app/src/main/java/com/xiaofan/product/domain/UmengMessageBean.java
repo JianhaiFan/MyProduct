@@ -13,7 +13,7 @@ public class UmengMessageBean implements Serializable{
     // 推送的别名
     private String alias;
     // 消息实体
-    private MessageBodyBean body;
+    private UmengMessageBodyBean body;
     // 附加消息
-    private MessageExtraBean extra;
+    private UmengMessageExtraBean extra;
 }

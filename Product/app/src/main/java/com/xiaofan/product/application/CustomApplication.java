@@ -13,6 +13,7 @@ import com.umeng.message.PushAgent;
 import com.xiaofan.product.service.CustomPushIntentService;
 import com.xiaofan.product.util.LogUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
+import com.zhy.http.okhttp.https.HttpsUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
 
 import java.util.concurrent.TimeUnit;
@@ -38,6 +39,18 @@ public class CustomApplication extends Application {
                                                     .readTimeout(15000L,TimeUnit.MILLISECONDS)
                                                     .build();
         OkHttpUtils.initClient(okHttpclient);
+
+        HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
+                //其他配置
+                .build();
+        OkHttpUtils.initClient(okHttpClient);
+
+//        HttpsUtils.getSslSocketFactory(
+//                证书的inputstream,
+//                本地证书的inputstream,
+//                本地证书的密码);
 
         // 初始化友盟相关信息
         PushAgent mPushAgent = PushAgent.getInstance(this);

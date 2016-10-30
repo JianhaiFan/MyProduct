@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @description: 友盟消息体
  * @changed by:
  */
-public class MessageBodyBean implements Serializable {
+public class UmengMessageBodyBean implements Serializable {
     // 消息标题
     private String title;
     // 自定义消息
@@ -17,9 +17,9 @@ public class MessageBodyBean implements Serializable {
     // 消息内容
     private String text;
 
-    public MessageBodyBean() {}
+    public UmengMessageBodyBean() {}
 
-    public MessageBodyBean(String title, String custom, String text) {
+    public UmengMessageBodyBean(String title, String custom, String text) {
         this.title = title;
         this.custom = custom;
         this.text = text;
@@ -51,7 +51,7 @@ public class MessageBodyBean implements Serializable {
 
     @Override
     public String toString() {
-        return "MessageBodyBean{" +
+        return "UmengMessageBodyBean{" +
                 "title='" + title + '\'' +
                 ", custom='" + custom + '\'' +
                 ", text='" + text + '\'' +

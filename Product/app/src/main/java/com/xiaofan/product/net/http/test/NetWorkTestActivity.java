@@ -85,7 +85,6 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
 
             @Override
             public void onResponse(TestGetAndPostBean testBean, int id) {
-
                 // 对实体Bean进行操作之前，要进行判空处理
                 if (testBean != null) {
                     LogUtil.e("TestBean:" + testBean.toString());
@@ -203,7 +202,7 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
             public void onResponse(TestUploadBean uploadBean, int id) {
                 if (uploadBean != null) {
                     if ("1".equals(uploadBean.getStatus())) {
-                        LoaderImageUtil.innerDisplay(uploadBean.getOutputList().get(0),iv_img,null);
+                        LoaderImageUtil.displayFromNet(uploadBean.getOutputList().get(0),R.drawable.test,iv_img);
                     }
                 }
             }

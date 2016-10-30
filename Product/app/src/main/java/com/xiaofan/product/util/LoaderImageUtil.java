@@ -23,22 +23,35 @@ public class LoaderImageUtil {
     public static final String TYPE_IMG_160PX_SIZE = "@!160px_db";
     // 其他缩略(除了头像类型和期刊封面)图类型
     public static final String TYPE_IMG_250PX_SIZE = "@!250px_db";
-    // 开启预览界面标志
-    public static final String TAG_START_PREVIEW = "picture_info";
-    // 默认资源图片ID,默认图片资源ID为-1，表示默认不加载本地图片
-    private static int resID = -1;
-    // 本地图片路径
-    private static String localFilePath;
+    // 默认图片的资源ID
+    private static int defaultImgID;
 
     /**
-     * 展示网络图片
-     * @param url
-     * @param iv
-     * @param imgType
-     * @param listener
+     * 展示网络图片(缩略图)
+     * @param url 图片路径
+     * @param defaultImgID 默认图片的资源ID
+     * @param iv 加载图片的控件
+     * @param imgType 缩略图类型
+     *                 {@link LoaderImageUtil#TYPE_IMG_100PX_SIZE}
+     *                 {@link LoaderImageUtil#TYPE_IMG_160PX_SIZE}
+     *                 {@link LoaderImageUtil#TYPE_IMG_250PX_SIZE}
      */
-    public static void displayFromNet(String url, ImageView iv, String imgType, ImageLoadingListener listener) {
+    public static void displayFromNet(String url, int defaultImgID, ImageView iv, String imgType) {
+        if(!TextUtils.isEmpty(url) && !TextUtils.isEmpty(imgType) && iv != null) {
+            innerDisplay(url + imgType, iv,null);
+        }
+    }
 
+    /**
+     * 展示网络图片（原图）
+     * @param url 图片路径
+     * @param defaultImgID 默认图片资源ID
+     * @param iv 加载图片的控件
+     */
+    public static void displayFromNet(String url, int defaultImgID, ImageView iv) {
+        if(!TextUtils.isEmpty(url) && iv != null) {
+            innerDisplay(url, iv,null);
+        }
     }
 
     /**
@@ -77,14 +90,16 @@ public class LoaderImageUtil {
         innerDisplay("content://" + uri,iv,null);
     }
 
-    // 展示图片逻辑处理
-    public static void innerDisplay(String url, ImageView iv,ImageLoadingListener listener) {
+    /**
+     * 内部处理图片逻辑
+     * @param url 图片路径
+     * @param iv 加载图片的控件
+     * @param listener 加载图片时的回调
+     */
+    private static void innerDisplay(String url, ImageView iv,ImageLoadingListener listener) {
         DisplayImageOptions.Builder builder = new DisplayImageOptions.Builder();
-
-        if (resID != -1) {
-            builder.showImageForEmptyUri(resID);
-            builder.showImageOnFail(resID);
-        }
+        builder.showImageForEmptyUri(defaultImgID);
+        builder.showImageOnFail(defaultImgID);
         builder.cacheInMemory(true);
         builder.cacheOnDisk(true);
         builder.considerExifParams(true);

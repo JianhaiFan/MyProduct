@@ -25,7 +25,7 @@ public class OssInitBean implements Serializable {
 
     public OssInitBean() {}
 
-    public OssInitBean(Context context,String endPoint, String accessKeyId, String accessKeySecret, String securityToken, String bucketName) {
+    public OssInitBean(String endPoint, String accessKeyId, String accessKeySecret, String securityToken, String bucketName) {
         this.endPoint = endPoint;
         this.accessKeyId = accessKeyId;
         this.accessKeySecret = accessKeySecret;
