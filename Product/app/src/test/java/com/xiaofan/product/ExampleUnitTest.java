@@ -1,5 +1,7 @@
 package com.xiaofan.product;
 
+import android.content.res.TypedArray;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -11,6 +13,7 @@ public class ExampleUnitTest {
 
     @Test
     public void test() throws Exception {
+
         assertEquals("acd","acf");
     }
 }

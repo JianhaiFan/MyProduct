@@ -2,7 +2,10 @@ package com.xiaofan.product.activity;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,7 +17,6 @@ import com.xiaofan.product.util.LogUtil;
 
 
 public class MainActivity extends AbstractBaseActivity {
-
 
     private ImageView iv_title_bar_plus;
     private ImageView iv_title_bar_search;
@@ -31,8 +33,6 @@ public class MainActivity extends AbstractBaseActivity {
         mContext = MainActivity.this;
 
 //        initData();
-        String pinyin =  HanziUtil.getChineseSpell("海");
-        LogUtil.e("海：" + pinyin);
 
 
 
@@ -62,7 +62,7 @@ public class MainActivity extends AbstractBaseActivity {
 //
 //        LogUtil.e("====================菜单===================\n");
 //        LogUtil.e("屏幕密度等级:" + ResourceUtil.getDensity(mContext));
-//        LogUtil.e("====================菜单===================\n");
+
 //        LogUtil.e("逻辑像素密度:" + ResourceUtil.getDensityDpi(mContext));
 //        LogUtil.e("====================菜单===================\n");
 //        LogUtil.e("标题栏的高度:" + pll_title_bar_root.getMeasuredHeight());
@@ -77,11 +77,17 @@ public class MainActivity extends AbstractBaseActivity {
     public void onLogin(View view) {
     }
 
+    public void onProgress(View view) {
+        startActivity(new Intent(this,ProgressBarActivity.class));
+    }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
     }
+
+
 
 
 }

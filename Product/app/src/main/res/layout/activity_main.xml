@@ -21,10 +21,15 @@
         android:text="登录"
         android:onClick="onLogin"/>
 
-
-
-
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="进度条"
+        android:id="@+id/button"
+        android:layout_below="@+id/bt_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:onClick="onProgress"/>
 
 
 </RelativeLayout>

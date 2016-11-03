@@ -33,7 +33,8 @@
 
         <!-- 主页面 -->
         <activity
-            android:name=".activity.MainActivity">
+            android:name=".activity.MainActivity"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -44,6 +45,13 @@
             android:name="com.xiaofan.product.net.http.test.NetWorkTestActivity"
             android:screenOrientation="portrait">
         </activity>
+        <!-- 进度条页面 -->
+        <activity
+            android:name="com.xiaofan.product.activity.ProgressBarActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+
 
         <!-- 友盟消息完全自定义服务 -->
         <service android:name="com.xiaofan.product.service.CustomPushIntentService"/>
