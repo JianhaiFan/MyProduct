@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 
 import com.umeng.message.PushAgent;
+import com.xiaofan.product.net.http.OkHttpUtil;
 import com.xiaofan.product.receiver.ExitAppReceiver;
 import com.xiaofan.product.util.ManifestUtil;
 
@@ -16,6 +17,8 @@ import com.xiaofan.product.util.ManifestUtil;
  * @Description: Activity页面的基类
  */
 public abstract class AbstractBaseActivity extends Activity {
+
+    protected ExitAppReceiver mExitAppReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +34,12 @@ public abstract class AbstractBaseActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // 取消网络响应
+        OkHttpUtil.cancel(AbstractBaseActivity.this);
+
+        if (mExitAppReceiver != null) {
+            unregisterReceiver(mExitAppReceiver);
+        }
     }
 
     /**
@@ -41,9 +50,9 @@ public abstract class AbstractBaseActivity extends Activity {
         // Intent intent = new Intent(ManifestUtil.getPackageName(this)+"." + "ExitAppReceiver");
         // sendBroadcast(intent);
 
-        ExitAppReceiver exitre = new ExitAppReceiver();
+        mExitAppReceiver = new ExitAppReceiver();
         IntentFilter intentfilter = new IntentFilter();
         intentfilter.addAction(ManifestUtil.getPackageName(this) + "." + "ExitAppReceiver");
-        registerReceiver(exitre, intentfilter);
+        registerReceiver(mExitAppReceiver, intentfilter);
     }
 }

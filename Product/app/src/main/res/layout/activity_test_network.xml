@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_app_bg"
-    android:padding="@dimen/yms5.0dimens5.0dp"
     >
 
     <RelativeLayout
@@ -17,7 +16,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GET请求"
-            android:textSize="@dimen/font_size_large"
             android:onClick="onGet"
             />
 
@@ -26,9 +24,7 @@
             android:layout_toRightOf="@+id/bt_get"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/yms5.0dimens5.0dp"
             android:text="POST请求"
-            android:textSize="@dimen/font_size_large"
             android:onClick="onPost"
             />
 
@@ -37,20 +33,16 @@
             android:layout_toRightOf="@+id/bt_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/yms5.0dimens5.0dp"
             android:text="POST上传JSON"
-            android:textSize="@dimen/font_size_large"
             android:onClick="onJson"
             />
 
         <Button
             android:id="@+id/bt_upload"
             android:layout_below="@+id/bt_get"
-            android:layout_marginTop="@dimen/yms5.0dimens5.0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="上传文件"
-            android:textSize="@dimen/font_size_large"
             android:onClick="onUpload"
             />
 
@@ -58,12 +50,9 @@
             android:id="@+id/bt_download"
             android:layout_below="@+id/bt_post"
             android:layout_toRightOf="@+id/bt_upload"
-            android:layout_marginTop="@dimen/yms5.0dimens5.0dp"
-            android:layout_marginLeft="@dimen/yms5.0dimens5.0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="下载文件"
-            android:textSize="@dimen/font_size_large"
             android:onClick="onDownload"
             />
 
@@ -71,12 +60,9 @@
             android:id="@+id/bt_other"
             android:layout_below="@+id/bt_post_json"
             android:layout_toRightOf="@+id/bt_download"
-            android:layout_marginTop="@dimen/yms5.0dimens5.0dp"
-            android:layout_marginLeft="@dimen/yms5.0dimens5.0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cookie/Session"
-            android:textSize="@dimen/font_size_large"
             android:onClick="onOther"
             />
     </RelativeLayout>
@@ -84,7 +70,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/yms5.0dimens5.0dp"
         android:orientation="horizontal">
 
         <TextView
@@ -92,7 +77,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="@color/color_black"
-            android:textSize="@dimen/font_size_large"
             android:text="文字测试"
             android:visibility="gone"/>
 

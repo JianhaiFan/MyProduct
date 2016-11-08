@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
  */
 public class MakeAdaptationFileUtil {
 
-    public final static String Template ="<dimen name=\"ymsxxxdimensxxxdp\">yyydp</dimen>\n";
+    public final static String Template ="<dimen name=\"yms_xxxdimens_xxx_px\">yyydp</dimen>\n";
     public final static String ROOT_FILE_320 = "values-w320dp";
     public final static String ROOT_FILE_360 = "values-w360dp";
     public final static double GAP_320 = 0.58;
@@ -37,12 +37,12 @@ public class MakeAdaptationFileUtil {
     public static void main(String[] args) {
 //        makeAdaptationXml(ROOT_FILE_320, GAP_320);
 //        makeAdaptationXml(ROOT_FILE_360, GAP_360);
-        makeAdaptationXml(ROOT_LDPI, GAP_LDPI);
-        makeAdaptationXml(ROOT_MDPI, GAP_MDPI);
-        makeAdaptationXml(ROOT_HDPI, GAP_HDPI);
+//        makeAdaptationXml(ROOT_LDPI, GAP_LDPI);
+//        makeAdaptationXml(ROOT_MDPI, GAP_MDPI);
+//        makeAdaptationXml(ROOT_HDPI, GAP_HDPI);
         makeAdaptationXml(ROOT_XHDPI, GAP_XHDPI);
-        makeAdaptationXml(ROOT_XXHDPI, GAP_XXHDPI);
-        makeAdaptationXml(ROOT_XXXHDPI, GAP_XXXHDPI);
+//        makeAdaptationXml(ROOT_XXHDPI, GAP_XXHDPI);
+//        makeAdaptationXml(ROOT_XXXHDPI, GAP_XXXHDPI);
     }
 
     /**
@@ -52,14 +52,14 @@ public class MakeAdaptationFileUtil {
      */
     private static void makeAdaptationXml(String filePath, double gap) {
         DecimalFormat df1 = new DecimalFormat("#.0");
-        DecimalFormat df2 = new DecimalFormat("#.00");
+        DecimalFormat df2 = new DecimalFormat("#.0");
         StringBuffer sb = new StringBuffer();
         sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
         sb.append("<resources>");
 
-        for(int i = 1;i <= 2001;i ++) {
-            String str = Template.replaceAll("xxx", (df1.format(Double.parseDouble(String.valueOf(0.5 * i)))));
-            sb.append(str.replaceAll("yyy", df2.format(gap * i)));
+        for(int i = 1;i <= 1280;i ++) {
+            String str = Template.replaceAll("xxx", (df1.format(Double.parseDouble(String.valueOf(gap * i)))));
+            sb.append(str.replaceAll("yyy", df2.format(0.5 * i)));
         }
 
         sb.append("</resources>");

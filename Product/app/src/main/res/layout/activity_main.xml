@@ -12,21 +12,28 @@
         layout="@layout/title_bar_main"
         />
 
-
-    <Button
-        android:id="@+id/bt_login"
+    <LinearLayout
+        android:id="@+id/ll_root"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="登录"
-        android:onClick="onLogin"/>
+        android:background="@color/color_red"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="@dimen/yms_dimens_200.0_px"
+            android:layout_height="@dimen/yms_dimens_200.0_px"
+            android:layout_marginTop="@dimen/yms_dimens_20.0_px"
+            android:text="登录"
+            android:onClick="onLogin"/>
+
+    </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="进度条"
-        android:id="@+id/button"
-        android:layout_below="@+id/bt_login"
+        android:id="@+id/bt_progress"
+        android:layout_below="@+id/ll_root"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="55dp"
         android:onClick="onProgress"/>

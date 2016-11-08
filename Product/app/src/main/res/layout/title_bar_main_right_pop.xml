@@ -38,10 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/img_pop_menu_one"
-                android:drawablePadding="@dimen/yms2.0dimens2.0dp"
+                android:drawablePadding="@dimen/yms_dimens_4.0_px"
                 android:drawableStart="@drawable/img_pop_menu_one"
                 android:gravity="center_vertical"
-                android:textSize="@dimen/font_size_large"
                 android:text="申请编辑" />
         </com.xiaofan.product.adaptation.percent.PercentLinearLayout>
 
@@ -66,7 +65,6 @@
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/img_pop_menu_one"
                 android:gravity="center_vertical"
-                android:textSize="@dimen/font_size_large"
                 android:text="发布文章" />
         </com.xiaofan.product.adaptation.percent.PercentLinearLayout>
 
@@ -91,7 +89,6 @@
                 android:drawablePadding="10dp"
                 android:drawableStart="@drawable/img_pop_menu_one"
                 android:gravity="center_vertical"
-                android:textSize="@dimen/font_size_large"
                 android:text="申请编委" />
         </com.xiaofan.product.adaptation.percent.PercentLinearLayout>
     </com.xiaofan.product.adaptation.percent.PercentLinearLayout>

@@ -17,16 +17,16 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:layout_marginLeftPercent="3%w"
-            android:textSize="@dimen/font_size_xlarge_high"
             android:gravity="center"
-            android:text="适配"/>
+            android:textSize="@dimen/yms_font_36_px"
+            android:textColor="#ffffff"
+            android:text="微信"/>
 
         <TextView
             android:id="@+id/tv_title_bar_msg_hint"
             android:layout_toRightOf="@+id/tv_title_bar_title"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="@dimen/font_size_xlarge_high"
             android:gravity="center"
             android:visibility="gone"
             android:text="(2)"/>
@@ -38,7 +38,7 @@
             android:layout_alignParentRight="true"
             android:layout_height="match_parent"
             android:background="@drawable/selector_title_bar_plus"
-            android:padding="@dimen/yms4.0dimens4.0dp"
+            android:padding="@dimen/yms_dimens_26.0_px"
             android:src="@drawable/img_title_bar_plus"/>
 
         <ImageView
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             app:layout_widthPercent="12.5%w"
             android:layout_height="match_parent"
-            android:padding="@dimen/yms4.0dimens4.0dp"
+            android:padding="@dimen/yms_dimens_26.0_px"
             android:background="@drawable/selector_title_bar_search"
             android:src="@drawable/img_title_bar_search"/>
 
