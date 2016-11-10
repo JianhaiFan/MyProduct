@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xiaofan.product.R;
+import com.xiaofan.product.activity.home.RecycleViewActivity;
 import com.xiaofan.product.util.DensityUtil;
 import com.xiaofan.product.util.DeviceUtil;
 import com.xiaofan.product.util.HanziUtil;
@@ -74,6 +75,8 @@ public class MainActivity extends AbstractBaseActivity {
     }
 
     public void onLogin(View view) {
+        int a = 1 / 0;
+        startActivity(new Intent(mContext, RecycleViewActivity.class));
 
     }
 

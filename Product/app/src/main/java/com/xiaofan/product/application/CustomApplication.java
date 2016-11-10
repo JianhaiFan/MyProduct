@@ -19,6 +19,7 @@ import com.zhy.http.okhttp.log.LoggerInterceptor;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okio.Buffer;
 
 
 /**
@@ -40,13 +41,12 @@ public class CustomApplication extends Application {
                                                     .build();
         OkHttpUtils.initClient(okHttpclient);
 
-        HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
-                //其他配置
-                .build();
-        OkHttpUtils.initClient(okHttpClient);
-
+//        HttpsUtils.SSLParams sslParams = HttpsUtils.getSslSocketFactory(null, null, null);
+//        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+//                .sslSocketFactory(sslParams.sSLSocketFactory, sslParams.trustManager)
+//                //其他配置
+//                .build();
+//        OkHttpUtils.initClient(okHttpClient);
 //        HttpsUtils.getSslSocketFactory(
 //                证书的inputstream,
 //                本地证书的inputstream,
@@ -87,6 +87,9 @@ public class CustomApplication extends Application {
                 .writeDebugLogs()
                 .build();
         ImageLoader.getInstance().init(config);
+        // 全局异常捕获初始化
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(getApplicationContext());
 
     }
 }

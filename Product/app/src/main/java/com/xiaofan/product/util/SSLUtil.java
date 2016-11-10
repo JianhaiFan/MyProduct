@@ -20,7 +20,7 @@ import javax.net.ssl.TrustManagerFactory;
  * @author: 范建海
  * @createTime: 2016/10/30 14:30
  * @className:  SSLUtil
- * @description: 证书工具类
+ * @description: https证书工具类
  * @changed by:
  */
 public class SSLUtil {
