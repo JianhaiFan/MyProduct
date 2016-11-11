@@ -1,11 +1,11 @@
-package com.xiaofan.product.util;
+package com.xiaofan.product.domain.constant;
 /**
  * @author: 范建海
  * @createTime: 2016/9/2 9:37
- * @className:  URLConstant
+ * @className:  UrlConstant
  * @Description: 请求服务器连接常量的工具类
  */
-public class URLConstant {
+public class UrlConstant {
     // 获得Url链接的根路径（测试）
     public static final String URL_BASE_TEST = "";
     // 获得Url链接的根路径（正式）

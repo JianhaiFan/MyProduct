@@ -11,10 +11,11 @@ import android.widget.Toast;
 import com.xiaofan.product.R;
 
 /**
- * 显示通知的工具类
- * User:lizhangqu(513163535@qq.com)
- * Date:2015-07-30
- * Time: 10:41
+ * @author: 范建海
+ * @createTime: 2016/11/11 16:04
+ * @className:  ToastUtil
+ * @description: 显示通知的工具类
+ * @changed by:
  */
 public class ToastUtil {
     private static Handler handler = new Handler(Looper.getMainLooper());
