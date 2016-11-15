@@ -50,18 +50,25 @@
             android:name="com.xiaofan.product.activity.ProgressBarActivity"
             android:screenOrientation="portrait">
         </activity>
-        <!-- 测试Recycleview的Activity页面 -->
+        <!-- 测试Recycleview的页面 -->
         <activity
             android:name="com.xiaofan.product.activity.home.RecycleViewActivity"
             android:screenOrientation="portrait">
         </activity>
-
-
-
+        <!-- 测试内容提供者的页面 -->
+        <activity
+            android:name="com.xiaofan.product.activity.ProviderTestActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
         <!-- 友盟消息完全自定义服务 -->
         <service android:name="com.xiaofan.product.service.CustomPushIntentService"/>
 
+        <!-- 联系人内容提供者 -->
+        <provider
+            android:name="com.xiaofan.product.provider.ContactContentProvider"
+            android:authorities="com.xiaofan.product.provider.ContactContentProvider"
+            android:exported="true" />
     </application>
 
 </manifest>

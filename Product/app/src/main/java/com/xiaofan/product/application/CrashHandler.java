@@ -1,4 +1,4 @@
-package com.xiaofan.product.application;
+ package com.xiaofan.product.application;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.xiaofan.product.domain.constant.Constant;
 import com.xiaofan.product.util.ExternalStorageUtil;
 import com.xiaofan.product.util.date.DateUtil1;
 
@@ -164,12 +165,11 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             String time = DateUtil1.formatDate2String(new Date(),DateUtil1.FORMAT_YYYY_MM_DD_HH_MM_SS_WORD_ZH);
             String fileName = "crash-" + time + "-" + timestamp + ".txt";
             if (ExternalStorageUtil.isExternalStorageWritable()) {
-                String path = ExternalStorageUtil.getExternalStoragePath() + "/product/crash/";
-                File dir = new File(path);
+                File dir = new File(Constant.CRASH_PATH);
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
-                FileOutputStream fos = new FileOutputStream(path + fileName);
+                FileOutputStream fos = new FileOutputStream(Constant.CRASH_PATH + fileName);
                 fos.write(sb.toString().getBytes());
                 fos.close();
             }

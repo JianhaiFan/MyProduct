@@ -3,26 +3,16 @@ package com.xiaofan.product.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.SystemClock;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.xiaofan.product.R;
 import com.xiaofan.product.activity.home.RecycleViewActivity;
-import com.xiaofan.product.util.DensityUtil;
-import com.xiaofan.product.util.DeviceUtil;
-import com.xiaofan.product.util.HanziUtil;
 import com.xiaofan.product.util.LogUtil;
-import com.xiaofan.product.util.ResourceUtil;
 
 
 public class MainActivity extends AbstractBaseActivity {
@@ -36,7 +26,6 @@ public class MainActivity extends AbstractBaseActivity {
     private Button bt_login;
     private Button bt_progress;
 
-    private LinearLayout ll_root;
 
 
     @Override
@@ -50,7 +39,6 @@ public class MainActivity extends AbstractBaseActivity {
         tv_title_bar_title = (TextView) findViewById(R.id.tv_title_bar_title);
         bt_login = (Button) findViewById(R.id.bt_login);
         bt_progress = (Button) findViewById(R.id.bt_progress);
-        ll_root = (LinearLayout) findViewById(R.id.ll_root);
     }
 
 
@@ -75,13 +63,16 @@ public class MainActivity extends AbstractBaseActivity {
     }
 
     public void onLogin(View view) {
-        int a = 1 / 0;
         startActivity(new Intent(mContext, RecycleViewActivity.class));
 
     }
 
     public void onProgress(View view) {
         startActivity(new Intent(this, ProgressBarActivity.class));
+    }
+
+    public void onProvider(View view) {
+        startActivity(new Intent(this,ProviderTestActivity.class));
     }
 
 

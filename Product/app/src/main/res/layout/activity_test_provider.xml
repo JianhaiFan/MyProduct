@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_app_bg"
+    >
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_margin="@dimen/yms_dimens_20.0_px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_black"
+        android:textSize="@dimen/yms_font_34_px"
+        android:text="这里是内容区域..."
+        />
+
+    
+    <ImageView
+        android:id="@+id/iv_unread_msg_hint"
+        android:layout_width="@dimen/yms_dimens_20.0_px"
+        android:layout_height="@dimen/yms_dimens_20.0_px"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/yms_dimens_20.0_px"
+        android:src="@drawable/img_hint_has_unread_msg"
+        />
+
+    <Button
+        android:id="@+id/bt_insert"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="增加"
+        android:onClick="onInsert"
+        />
+
+    <Button
+        android:id="@+id/bt_delete"
+        android:layout_marginLeft="@dimen/yms_dimens_20.0_px"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/bt_insert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="删除"
+        android:onClick="onDelete"
+        />
+
+    <Button
+        android:id="@+id/bt_query"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="查询"
+        android:onClick="onQuery"
+        />
+
+    <Button
+        android:id="@+id/bt_update"
+        android:layout_marginRight="@dimen/yms_dimens_20.0_px"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/bt_query"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="修改"
+        android:onClick="onUpdate"
+        />
+
+</RelativeLayout>

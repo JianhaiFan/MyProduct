@@ -72,8 +72,11 @@ public class CustomApplication extends Application {
         // 完全自定义消息处理
         mPushAgent.setPushIntentServiceClass(CustomPushIntentService.class);
         // 获取ImageLoader下载图片的路径
+
+
         String path = StorageUtils.getCacheDirectory(this).getAbsolutePath();
         LogUtil.e("ImageLoader文件下载路径:" + path);
+
         // 初始化ImageLoader
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
                 .threadPriority(Thread.NORM_PRIORITY - 2)
