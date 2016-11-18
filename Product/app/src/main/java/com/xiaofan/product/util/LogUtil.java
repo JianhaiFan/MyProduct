@@ -20,6 +20,11 @@ public class LogUtil {
             Log.d(TAG,desc);
     }
 
+    public static void d(String tag,String desc) {
+        if (DEBUG)
+            Log.d(tag,desc);
+    }
+
     public static void d(String desc, Throwable tr) {
         if (DEBUG)
             Log.d(TAG, desc, tr);
@@ -29,6 +34,12 @@ public class LogUtil {
         if (DEBUG)
             Log.v(TAG, desc);
     }
+
+    public static void v(String tag,String desc) {
+        if (DEBUG)
+            Log.v(tag,desc);
+    }
+
     public static void v(String desc, Throwable tr) {
         if (DEBUG)
             Log.v(TAG, desc);
@@ -39,9 +50,9 @@ public class LogUtil {
             Log.w(TAG, desc);
     }
 
-    public static void w(Throwable ioe) {
+    public static void w(String tag,String desc) {
         if (DEBUG)
-            Log.w(TAG, ioe);
+            Log.w(tag,desc);
     }
 
     public static void w(String desc, Throwable e) {
@@ -54,6 +65,11 @@ public class LogUtil {
             Log.i(TAG,desc);
     }
 
+    public static void i(String tag,String desc) {
+        if (DEBUG)
+            Log.i(tag,desc);
+    }
+
     public static void i(String desc, Throwable tr) {
         if (DEBUG)
             Log.i(TAG, desc, tr);
@@ -62,6 +78,11 @@ public class LogUtil {
     public static void e(String desc) {
         if (DEBUG)
             Log.e(TAG, desc);
+    }
+
+    public static void e(String tag,String desc) {
+        if (DEBUG)
+            Log.e(tag,desc);
     }
 
     public static void e(String desc, Throwable tr) {
