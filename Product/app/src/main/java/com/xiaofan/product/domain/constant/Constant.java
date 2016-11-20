@@ -27,8 +27,7 @@ public class Constant {
     // 数据库路径
     public static final String DB_PATH = CACHE_PATH + "database" + File.separator;
     // 图片路径
-    public static final String IMG_PATH = CACHE_PATH + "image" + File.separator;
-
+    public static final String IMAGE_PATH = CACHE_PATH + "image" + File.separator;
 
     /**
      * 阿里云路径常量

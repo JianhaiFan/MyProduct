@@ -1,4 +1,4 @@
-package com.xiaofan.product.activity.home;
+package com.xiaofan.product.activity.test;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;

@@ -1,6 +1,7 @@
 package com.xiaofan.product.util;
 
 import android.os.Environment;
+import android.os.StatFs;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -242,4 +243,32 @@ public class ExternalStorageUtil {
         else
             return true;
     }
+
+    /**
+     * 获取Sdcard剩余空间的大小 单位为 M
+     *
+     * @return
+     */
+    public static double getSDcardAvailableSize() {
+
+        long blocksize = 0;
+        long availbleblocks = 0;
+
+        if (isExternalStorageWritable()) {
+            StatFs stat = new StatFs(getExternalStoragePath());
+
+            if(AndroidVersionUtil.isKitkat()){
+                blocksize = stat.getBlockSizeLong();
+                availbleblocks = stat.getAvailableBlocksLong();
+            }else{
+                blocksize = stat.getBlockSize();
+                availbleblocks = stat.getAvailableBlocks();
+            }
+        }
+
+        return ((availbleblocks * blocksize * 1.0) / 1024 / 1024);
+    }
+
+
+
 }

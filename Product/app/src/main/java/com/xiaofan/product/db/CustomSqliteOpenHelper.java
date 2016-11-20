@@ -14,15 +14,19 @@ import com.xiaofan.product.domain.constant.SqlConstant;
  * @changed by:
  */
 public class CustomSqliteOpenHelper extends SQLiteOpenHelper{
+    // 数据库帮助帮助类实例
+    private static CustomSqliteOpenHelper instance;
+
+
 
     /**
      * 构造数据库方法
      * @param context 上下文
-     * @param name 数据库名
-     * @param version 当前版本
+     * @param dbName 数据库名
+     * @param dbVersion 当前版本
      */
-    public CustomSqliteOpenHelper(Context context, String name, int version) {
-        super(context, name, null, version);
+    private CustomSqliteOpenHelper(Context context, String dbName, int dbVersion) {
+        super(context, dbName, null, dbVersion);
     }
 
 
@@ -33,6 +37,24 @@ public class CustomSqliteOpenHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
+
+    /**
+     * 获取数据库帮助类的单例方法
+     * @param context 上下文
+     * @param dbName 数据库名称
+     * @param dbVersion 数据库版本号
+     * @return
+     */
+    public static CustomSqliteOpenHelper getInstance(Context context,String dbName, int dbVersion) {
+        if(instance == null)
+            synchronized (CustomSqliteOpenHelper.class) {
+                if(instance == null)
+                    instance = new CustomSqliteOpenHelper(context,dbName,dbVersion);
+            }
+        return instance;
 
     }
 }

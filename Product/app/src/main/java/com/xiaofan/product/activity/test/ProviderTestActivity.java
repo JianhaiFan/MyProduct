@@ -1,4 +1,4 @@
-package com.xiaofan.product.activity;
+package com.xiaofan.product.activity.test;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.xiaofan.product.R;
+import com.xiaofan.product.activity.AbstractBaseActivity;
 import com.xiaofan.product.domain.constant.SqlConstant;
 import com.xiaofan.product.util.LogUtil;
 
@@ -19,7 +20,7 @@ import com.xiaofan.product.util.LogUtil;
  * @description: 内容提供者测试类
  * @changed by:
  */
-public class ProviderTestActivity extends AbstractBaseActivity{
+public class ProviderTestActivity extends AbstractBaseActivity {
     // 展示搜索出来的内容
     private TextView tv_content;
     // 内容处理器

@@ -40,7 +40,7 @@ public class ContactContentProvider extends AbstractBaseProvider {
         if (!file.exists()) {
             file.mkdirs();
         }
-        csoHelper = new CustomSqliteOpenHelper(this.getContext(), Constant.DB_PATH + SqlConstant.DB_TEST_NAME,SqlConstant.DB_TEST_VERSION);
+        csoHelper = CustomSqliteOpenHelper.getInstance(getContext(),Constant.DB_PATH + SqlConstant.DB_TEST_NAME,SqlConstant.DB_TEST_VERSION);
         return true;
     }
 

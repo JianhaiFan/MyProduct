@@ -1,4 +1,4 @@
-package com.xiaofan.product.activity;
+package com.xiaofan.product.activity.other;
 
 
 import android.content.Context;
@@ -11,7 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.xiaofan.product.R;
-import com.xiaofan.product.activity.home.RecycleViewActivity;
+import com.xiaofan.product.activity.AbstractBaseActivity;
+import com.xiaofan.product.activity.test.ProgressBarActivity;
+import com.xiaofan.product.activity.test.ProviderTestActivity;
+import com.xiaofan.product.activity.test.RecycleViewActivity;
+import com.xiaofan.product.util.ExternalStorageUtil;
 import com.xiaofan.product.util.LogUtil;
 
 
@@ -64,6 +68,8 @@ public class MainActivity extends AbstractBaseActivity {
 
     public void onLogin(View view) {
         startActivity(new Intent(mContext, RecycleViewActivity.class));
+        tv_title_bar_title.setText(ExternalStorageUtil.getSDcardAvailableSize() + "");
+        LogUtil.e("SDcard剩余空间:" + ExternalStorageUtil.getSDcardAvailableSize());
 
     }
 

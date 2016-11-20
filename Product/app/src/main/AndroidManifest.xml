@@ -26,49 +26,77 @@
             android:name="UMENG_MESSAGE_SECRET"
             android:value="3967e5eeec7bc87449bb0185f5da65ce">
         </meta-data>
-        <meta-data
+        <meta-dataW
             android:name="UMENG_CHANNEL"
             android:value="Channel ID" >
-        </meta-data>
+        </meta-dataW>
 
-        <!-- 主页面 -->
+        <!-- 四大组件之 Activity -->
+
+        <!-- 首页模块 -->
+
+        <!-- 通讯录模块 -->
+
+        <!-- 发现模块 -->
+
+        <!-- 我的模块 -->
+
+        <!-- 其他模块 -->
+
+        <!-- 启动页 -->
         <activity
-            android:name=".activity.MainActivity"
-            >
+            android:name="com.xiaofan.product.activity.other.OtherStartPageActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 网络测试页面 -->
+        <!-- 主页面 -->
+        <activity
+            android:name="com.xiaofan.product.activity.other.MainActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <!-- 测试模块 -->
+
+        <!-- 网络测试 -->
         <activity
             android:name="com.xiaofan.product.net.http.test.NetWorkTestActivity"
             android:screenOrientation="portrait">
         </activity>
-        <!-- 进度条页面 -->
+        <!-- 进度条测试页面 -->
         <activity
-            android:name="com.xiaofan.product.activity.ProgressBarActivity"
+            android:name="com.xiaofan.product.activity.test.ProgressBarActivity"
             android:screenOrientation="portrait">
         </activity>
-        <!-- 测试Recycleview的页面 -->
+        <!-- Recycleview测试的页面 -->
         <activity
-            android:name="com.xiaofan.product.activity.home.RecycleViewActivity"
+            android:name="com.xiaofan.product.activity.test.RecycleViewActivity"
             android:screenOrientation="portrait">
         </activity>
-        <!-- 测试内容提供者的页面 -->
+        <!-- 内容提供者的测试页面 -->
         <activity
-            android:name="com.xiaofan.product.activity.ProviderTestActivity"
+            android:name="com.xiaofan.product.activity.test.ProviderTestActivity"
             android:screenOrientation="portrait">
         </activity>
 
+        <!-- 四大组件之 Service -->
+
         <!-- 友盟消息完全自定义服务 -->
         <service android:name="com.xiaofan.product.service.CustomPushIntentService"/>
+
+        <!-- 四大组件之 ContentProvider -->
 
         <!-- 联系人内容提供者 -->
         <provider
             android:name="com.xiaofan.product.provider.ContactContentProvider"
             android:authorities="com.xiaofan.product.provider.ContactContentProvider"
             android:exported="true" />
+
+        <!-- 四大组件之 BroadcastReceiver -->
+
+
     </application>
 
 </manifest>

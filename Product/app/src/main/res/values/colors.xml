@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <!-- 自定义颜色 -->
+    <!-- 系统默认颜色分类 -->
+    <color name="color_primary_dark">#303F9F</color>
+    <color name="color_accent">#FF4081</color>
 
+    <!-- 名称颜色分类 -->
     <color name="color_white">#FFFFFF</color>
     <color name="color_black">#000000</color>
     <color name="color_red">#FF0000</color>
     <color name="color_green">#00FF00</color>
-    <color name="color_green_normal">#DF09BB07</color>
-    <!-- 灰色 -->
-    <color name="color_gray_divider">#DCDCDC</color>
 
-    <!-- 应用的主题背景色 -->
+
+    <!-- 业务颜色分类 -->
     <color name="color_app_bg">#EBEBEB</color>
     <color name="color_title_bar_bg">#2E2D33</color>
     <color name="color_title_bar_search_pressed">#339E9E9E</color>
-    <color name="color_title_bar_plus_pressed">#f0252525</color>
+    <color name="color_title_bar_plus_pressed">#F0252525</color>
+
+    <!-- 字体颜色渐变分类 -->
+    <color name="color_green_normal">#DF09BB07</color>
+    <color name="color_gray_divider">#DCDCDC</color>
+
+    <!-- 背景颜色渐变分类 -->
+
+
 </resources>

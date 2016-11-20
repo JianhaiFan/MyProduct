@@ -1,4 +1,4 @@
-package com.xiaofan.product.activity;
+package com.xiaofan.product.activity.test;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.xiaofan.product.R;
+import com.xiaofan.product.activity.AbstractBaseActivity;
 import com.xiaofan.product.util.LogUtil;
 import com.xiaofan.product.util.ManifestUtil;
 import com.xiaofan.product.widget.RoundProgressBar;
@@ -17,7 +18,7 @@ import com.xiaofan.product.widget.RoundProgressBar;
  * @description: 进度条页面
  * @changed by:
  */
-public class ProgressBarActivity extends AbstractBaseActivity{
+public class ProgressBarActivity extends AbstractBaseActivity {
 
     private RoundProgressBar mRoundProgressBar1, mRoundProgressBar2 ,mRoundProgressBar3, mRoundProgressBar4, mRoundProgressBar5;
     private int progress = 0;
@@ -68,7 +69,6 @@ public class ProgressBarActivity extends AbstractBaseActivity{
 
 
     public void exit(View view) {
-        LogUtil.e("ManifestUtil.getPackageName(this): " + ManifestUtil.getPackageName(this));
         Intent intent = new Intent(ManifestUtil.getPackageName(this)+"." + "ExitAppReceiver");
         sendBroadcast(intent);
 
