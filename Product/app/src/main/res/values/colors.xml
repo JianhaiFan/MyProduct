@@ -18,10 +18,15 @@
     <color name="color_title_bar_plus_pressed">#F0252525</color>
 
     <!-- 字体颜色渐变分类 -->
-    <color name="color_green_normal">#DF09BB07</color>
-    <color name="color_gray_divider">#DCDCDC</color>
+    <color name="color_font_white_normal">#FFFFFF</color>
+    <color name="color_font_white_normal_pressed">#A0D6A0</color>
+    <color name="color_font_black_normal">#5A5A5A</color>
+    <color name="color_font_black_normal_pressed">#888888</color>
 
     <!-- 背景颜色渐变分类 -->
-
+    <color name="color_bg_green_normal">#1AAD19</color>
+    <color name="color_bg_green_normal_pressed">#179B16</color>
+    <color name="color_bg_white_normal">#F8F8F8</color>
+    <color name="color_bg_white_normal_pressed">#DBDBDB</color>
 
 </resources>

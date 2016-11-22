@@ -10,6 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:onClick="onSwitchLanguage"
         android:padding="@dimen/yms_dimens_42.0_px"
         >
 
@@ -21,6 +23,35 @@
             android:text="@string/language"
             />
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="@dimen/yms_dimens_246.0_px"
+        android:layout_height="@dimen/yms_dimens_96.0_px"
+        android:layout_marginLeft="@dimen/yms_dimens_42.0_px"
+        android:layout_marginBottom="@dimen/yms_dimens_42.0_px"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/selector_shape_green_8px"
+        android:textColor="@color/selector_color_white"
+        android:textSize="@dimen/yms_font_34_px"
+        android:text="@string/loginin"
+        android:onClick="onLogin"
+        />
+
+    <Button
+        android:id="@+id/bt_register"
+        android:layout_width="@dimen/yms_dimens_246.0_px"
+        android:layout_height="@dimen/yms_dimens_96.0_px"
+        android:layout_marginRight="@dimen/yms_dimens_42.0_px"
+        android:layout_marginBottom="@dimen/yms_dimens_42.0_px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/selector_shape_white_8px"
+        android:textColor="@color/selector_color_black"
+        android:textSize="@dimen/yms_font_34_px"
+        android:text="@string/register"
+        android:onClick="onRegister"
+        />
 
 
 

@@ -5,5 +5,7 @@
     <string name="today">今天</string>
     <string name="yesterday">昨天</string>
     <string name="language">语言</string>
+    <string name="loginin">登录</string>
+    <string name="register">注册</string>
 
 </resources>

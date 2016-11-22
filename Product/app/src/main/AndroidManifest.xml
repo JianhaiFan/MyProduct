@@ -52,6 +52,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 登录页面 -->
+        <activity
+            android:name="com.xiaofan.product.activity.other.OtherLoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+
         <!-- 主页面 -->
         <activity
             android:name="com.xiaofan.product.activity.other.MainActivity"

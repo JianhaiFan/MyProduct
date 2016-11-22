@@ -10,9 +10,10 @@ import android.net.Uri;
  * @changed by:
  */
 public class SqlConstant {
-
+    // 数据库扩展名
+    public static final String DB_EXTENSION_NAME = ".sqlite";
     // 测试数据库名称
-    public static final String DB_TEST_NAME = "db_test_product.sqlite";
+    public static final String DB_TEST_NAME = "db_test_product" + DB_EXTENSION_NAME;
     // 测试数据库表名
     public static final String TB_TEST_NAME = "tb_test_product";
     // 测试数据库版本

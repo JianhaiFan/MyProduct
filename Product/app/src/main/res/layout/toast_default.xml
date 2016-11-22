@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:gravity="center"
-              android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/toast_content"
@@ -11,13 +11,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/img_toast_default_bg"
         android:gravity="center_vertical"
-        android:maxWidth="275dp"
-        android:paddingBottom="16dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="16dp"
+        android:maxWidth="@dimen/yms_dimens_550.0_px"
+        android:paddingBottom="@dimen/yms_dimens_32.0_px"
+        android:paddingLeft="@dimen/yms_dimens_40.0_px"
+        android:paddingRight="@dimen/yms_dimens_40.0_px"
+        android:paddingTop="@dimen/yms_dimens_32.0_px"
         android:text="text"
         android:textColor="@android:color/white"
-        android:textSize="14dp"/>
+        android:textSize="@dimen/yms_font_32_px"/>
 
 </LinearLayout>
