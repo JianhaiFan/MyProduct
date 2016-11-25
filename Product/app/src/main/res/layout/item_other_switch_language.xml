@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@drawable/selector_item_pressed"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/yms_dimens_97.0_px"
+        >
+
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/color_484848"
+            android:textSize="@dimen/yms_font_30_px"
+            android:layout_marginLeft="@dimen/yms_dimens_30.0_px"
+            android:layout_marginRight="@dimen/yms_dimens_30.0_px"
+            android:text="@string/test_item"/>
+
+        <RadioButton
+            android:id="@+id/rb_language"
+            android:layout_width="@dimen/yms_dimens_34.0_px"
+            android:layout_height="@dimen/yms_dimens_34.0_px"
+            android:layout_marginLeft="@dimen/yms_dimens_30.0_px"
+            android:layout_marginRight="@dimen/yms_dimens_30.0_px"
+            android:button="@null"
+            android:background="@drawable/selector_radio_style_one"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+
+        <View
+            android:id="@+id/view"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/yms_dimens_2.0_px"
+            />
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

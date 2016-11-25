@@ -13,7 +13,7 @@ public class LogUtil {
     /** 控制显示日志的常量 **/
     public static final boolean DEBUG = true;
     /** 日志标记常量 **/
-    public static final String TAG = "yms";
+    public static final String TAG = "yxck";
 
     public static void d(String desc) {
         if (DEBUG)

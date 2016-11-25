@@ -7,5 +7,9 @@
     <string name="language">语言</string>
     <string name="loginin">登录</string>
     <string name="register">注册</string>
+    <string name="test_title">测试标题</string>
+    <string name="test_item">测试ITEM</string>
+    <string name="save">保存</string>
+    <string name="more_language">多语言</string>
 
 </resources>
