@@ -269,6 +269,25 @@ public class ExternalStorageUtil {
         return ((availbleblocks * blocksize * 1.0) / 1024 / 1024);
     }
 
+    /**
+     * 判断是否存在有相应的文件
+     * @param absolutePath 文件的绝对路径
+     * @return
+     */
+    public static boolean fileIsExists(String absolutePath){
+        try{
+            File f = new File(absolutePath);
+
+            if(!f.exists()){
+                return false;
+            }
+
+        }catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
 
 
 }

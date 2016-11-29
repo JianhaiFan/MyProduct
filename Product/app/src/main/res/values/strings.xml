@@ -1,15 +1,26 @@
 <resources>
-    <string name="app_name">Product</string>
+    <string name="app_name" translatable="false">产品</string>
     <!-- 自定义字符串 -->
-    <string name="yms">医麦思</string>
-    <string name="today">今天</string>
-    <string name="yesterday">昨天</string>
-    <string name="language">语言</string>
-    <string name="loginin">登录</string>
-    <string name="register">注册</string>
-    <string name="test_title">测试标题</string>
-    <string name="test_item">测试ITEM</string>
-    <string name="save">保存</string>
-    <string name="more_language">多语言</string>
+    <string name="yms" translatable="false">医麦思</string>
+    <string name="today" translatable="false">今天</string>
+    <string name="yesterday" translatable="false">昨天</string>
+    <string name="language" translatable="false">语言</string>
+    <string name="loginin" translatable="false">登录</string>
+    <string name="register" translatable="false">注册</string>
+    <string name="test_title" translatable="false">测试标题</string>
+    <string name="test_item" translatable="false">测试ITEM</string>
+    <string name="save" translatable="false">保存</string>
+    <string name="more_language" translatable="false">多语言</string>
+    <string name="auto" translatable="false">跟随系统</string>
+    <string name="chinese_simple" translatable="false">中文简体</string>
+    <string name="english" translatable="false">English</string>
+    <string name="progress" translatable="false">进度条</string>
+    <string name="provider" translatable="false">提供者</string>
+    <string name="content_hint" translatable="false">这里是内容区域. </string>
+    <string name="add" translatable="false">增加</string>
+    <string name="del" translatable="false">删除</string>
+    <string name="query" translatable="false">查询</string>
+    <string name="update" translatable="false">修改</string>
+
 
 </resources>

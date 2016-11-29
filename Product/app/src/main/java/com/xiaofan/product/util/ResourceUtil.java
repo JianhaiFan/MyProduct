@@ -1,15 +1,21 @@
 package com.xiaofan.product.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.xiaofan.product.activity.other.OtherStartPageActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.util.Locale;
 
 /**
  * @author: 范建海
@@ -214,5 +220,24 @@ public class ResourceUtil {
         return ctx.getResources().getDimension(resID);
     }
 
+    /**
+     * 切换语言
+     * @param ctx 上下文
+     * @param locale 语言类型
+     * @param isInit 是否是初始化进入应用
+     */
+    public static void switchLanguage(Context ctx,Locale locale,boolean isInit) {
+        Resources mResources = ctx.getResources();
+        Configuration mConfiguration = mResources.getConfiguration();
+        DisplayMetrics mDisplayMetrics = mResources .getDisplayMetrics();
+        mConfiguration.locale = locale != null ? locale : Locale.getDefault();
+        mResources.updateConfiguration(mConfiguration,mDisplayMetrics);
+
+        if (!isInit) {
+            Intent intent = new Intent(ctx, OtherStartPageActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            ctx.startActivity(intent);
+        }
+    }
 
 }

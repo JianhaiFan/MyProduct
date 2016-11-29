@@ -20,14 +20,14 @@
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/yms_dimens_20.0_px"
         android:textSize="@dimen/yms_font_32_px"
-        android:text="登录"
+        android:text="@string/loginin"
         android:onClick="onLogin"/>
 
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="进度条"
+        android:text="@string/progress"
         android:id="@+id/bt_progress"
         android:layout_above="@+id/bt_login"
         android:layout_centerHorizontal="true"
@@ -40,7 +40,7 @@
         android:layout_below="@+id/bt_login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/yms_dimens_20.0_px"
-        android:text="提供者"
+        android:text="@string/provider"
         android:onClick="onProvider"
         />
 

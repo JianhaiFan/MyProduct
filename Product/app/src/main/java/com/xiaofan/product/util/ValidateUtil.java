@@ -2,6 +2,9 @@ package com.xiaofan.product.util;
 
 import android.text.TextUtils;
 
+import com.xiaofan.product.domain.constant.Constant;
+import com.xiaofan.product.domain.constant.SqlConstant;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -311,6 +314,16 @@ public class ValidateUtil {
             default:
                 return true;
         }
+    }
+
+    /**
+     * 是否为游客身份
+     * @param oldUserId 上一个用户的ID
+     * @param userId 当前用户的ID
+     * @return
+     */
+    public static boolean isTourist(String oldUserId,String userId) {
+        return Constant.DEFAULT_USER_ID.equals(oldUserId) && Constant.DEFAULT_USER_ID.equals(userId);
     }
 
 

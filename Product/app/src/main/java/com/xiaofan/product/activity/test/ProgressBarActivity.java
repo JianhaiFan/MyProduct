@@ -2,11 +2,13 @@ package com.xiaofan.product.activity.test;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
 
 import com.xiaofan.product.R;
 import com.xiaofan.product.activity.AbstractBaseActivity;
+import com.xiaofan.product.db.PersonalInfomationHelper;
 import com.xiaofan.product.util.LogUtil;
 import com.xiaofan.product.util.ManifestUtil;
 import com.xiaofan.product.widget.RoundProgressBar;
@@ -69,8 +71,19 @@ public class ProgressBarActivity extends AbstractBaseActivity {
 
 
     public void exit(View view) {
+
         Intent intent = new Intent(ManifestUtil.getPackageName(this)+"." + "ExitAppReceiver");
         sendBroadcast(intent);
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SystemClock.sleep(2000);
+
+                android.os.Process.killProcess(android.os.Process.myPid());
+            }
+        });
+        t.start();
 
     }
 }

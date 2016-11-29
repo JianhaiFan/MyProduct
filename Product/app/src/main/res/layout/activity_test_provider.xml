@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/color_black"
         android:textSize="@dimen/yms_font_34_px"
-        android:text="这里是内容区域..."
+        android:text="@string/content_hint"
         />
 
     
@@ -30,7 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="增加"
+        android:text="@string/add"
         android:onClick="onInsert"
         />
 
@@ -41,7 +41,7 @@
         android:layout_toRightOf="@+id/bt_insert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="删除"
+        android:text="@string/del"
         android:onClick="onDelete"
         />
 
@@ -51,7 +51,7 @@
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="查询"
+        android:text="@string/query"
         android:onClick="onQuery"
         />
 
@@ -62,7 +62,7 @@
         android:layout_toLeftOf="@+id/bt_query"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="修改"
+        android:text="@string/update"
         android:onClick="onUpdate"
         />
 

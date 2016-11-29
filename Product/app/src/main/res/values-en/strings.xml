@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Product</string>
+    <string name="language" translatable="false">Language</string>
+    <string name="loginin" translatable="false">Login</string>
+    <string name="more_language" translatable="false">More Language</string>
+    <string name="register" translatable="false">Register</string>
+    <string name="save" translatable="false">Save</string>
+    <string name="test_item" translatable="false">Test Item</string>
+    <string name="test_title" translatable="false">Test Title</string>
+    <string name="today" translatable="false">Today</string>
+    <string name="yesterday" translatable="false">Yesterday</string>
+    <string name="yms" translatable="false">YiMaiSi</string>
+    <string name="content_hint" translatable="false">This is the content area. </string>
+    <string name="auto" translatable="false">Auto</string>
+    <string name="chinese_simple" translatable="false">Chinese Simple</string>
+    <string name="english" translatable="false">English</string>
+    <string name="progress" translatable="false">Progress</string>
+    <string name="provider" translatable="false">Provider</string>
+    <string name="add" translatable="false">Add</string>
+    <string name="del" translatable="false">Delete</string>
+    <string name="query" translatable="false">Query</string>
+    <string name="update" translatable="false">Update</string>
+</resources>

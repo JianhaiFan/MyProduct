@@ -7,8 +7,6 @@ import android.view.View;
 
 import com.xiaofan.product.R;
 import com.xiaofan.product.activity.AbstractBaseActivity;
-import com.xiaofan.product.util.ResourceUtil;
-import com.xiaofan.product.util.ToastUtil;
 
 /**
  * @author: 范建海
@@ -30,17 +28,14 @@ public class OtherStartPageActivity extends AbstractBaseActivity{
 
 
     public void onSwitchLanguage(View view) {
-        ToastUtil.show(mContext, ResourceUtil.getString(mContext,R.string.language),0);
         startActivity(new Intent(mContext,OtherLanguageSwitchActivity.class));
     }
 
     public void onLogin(View view) {
-        ToastUtil.show(mContext, ResourceUtil.getString(mContext,R.string.loginin),0);
         startActivity(new Intent(mContext,OtherLoginActivity.class));
     }
 
     public void onRegister(View view) {
-        ToastUtil.show(mContext, ResourceUtil.getString(mContext,R.string.register),0);
         startActivity(new Intent(mContext,MainActivity.class));
     }
 }

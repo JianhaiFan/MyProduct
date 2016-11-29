@@ -1,5 +1,6 @@
 package com.xiaofan.product.provider;
 
+import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
@@ -21,7 +22,7 @@ import java.io.File;
  * @description: 联系人内容提供者
  * @changed by:
  */
-public class ContactContentProvider extends AbstractBaseProvider {
+public class ContactContentProvider extends ContentProvider {
     // 数据库路径匹配
     private static UriMatcher uriMatcher = null;
 
@@ -30,7 +31,7 @@ public class ContactContentProvider extends AbstractBaseProvider {
     static {
 
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(SqlConstant.AUTHORITY,SqlConstant.TB_TEST_NAME,SqlConstant.URI_TB_TEST_CODE);
+        uriMatcher.addURI(SqlConstant.PERSONAL_INFO_AUTHORITY,SqlConstant.TB_TEST_NAME,SqlConstant.URI_TB_TEST_CODE);
 
     }
 
@@ -63,7 +64,7 @@ public class ContactContentProvider extends AbstractBaseProvider {
     @Nullable
     @Override
     public String getType(Uri uri) {
-        return super.getType(uri);
+        return null;
     }
 
     @Nullable
@@ -87,12 +88,13 @@ public class ContactContentProvider extends AbstractBaseProvider {
 
     @Override
     public int delete(Uri uri, String s, String[] strings) {
-        return super.delete(uri, s, strings);
+        return 0;
     }
 
     @Override
     public int update(Uri uri, ContentValues contentValues, String s, String[] strings) {
-        return super.update(uri, contentValues, s, strings);
+        return 0;
     }
+
 
 }

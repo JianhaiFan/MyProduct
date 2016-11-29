@@ -1,7 +1,13 @@
 package com.xiaofan.product.activity.other;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +23,8 @@ import android.widget.TextView;
 
 import com.xiaofan.product.R;
 import com.xiaofan.product.activity.AbstractBaseActivity;
+import com.xiaofan.product.domain.constant.Constant;
+import com.xiaofan.product.domain.constant.SqlConstant;
 import com.xiaofan.product.util.DensityUtil;
 import com.xiaofan.product.util.LogUtil;
 import com.xiaofan.product.util.ResourceUtil;
@@ -25,6 +33,7 @@ import com.xiaofan.product.widget.DynamicListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @author: 范建海
@@ -56,10 +65,9 @@ public class OtherLanguageSwitchActivity extends AbstractBaseActivity {
         lv_language = (ListView ) findViewById(R.id.lv_language);
 
         mLanguages = new ArrayList<String>();
-        mLanguages.add("跟随系统");
-        mLanguages.add("English");
-        mLanguages.add("한국어");
-        mLanguages.add("日本語");
+        mLanguages.add(ResourceUtil.getString(mContext,R.string.auto));
+        mLanguages.add(ResourceUtil.getString(mContext,R.string.chinese_simple));
+        mLanguages.add(ResourceUtil.getString(mContext,R.string.english));
 
         mLanguageSwitchAdapter = new LanguageSwitchAdapter();
         lv_language.setAdapter(mLanguageSwitchAdapter);
@@ -79,8 +87,10 @@ public class OtherLanguageSwitchActivity extends AbstractBaseActivity {
         finish();
     }
 
+
+
     public void onSave(View view) {
-        ToastUtil.show(mContext, ResourceUtil.getString(mContext,R.string.save),0);
+        ResourceUtil.switchLanguage(mContext,Locale.ENGLISH,false);
     }
 
     class LanguageSwitchAdapter extends BaseAdapter {

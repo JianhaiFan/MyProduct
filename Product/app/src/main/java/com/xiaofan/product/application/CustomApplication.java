@@ -33,6 +33,8 @@ public class CustomApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+
         // 初始化网络
         OkHttpClient okHttpclient = new OkHttpClient.Builder()
                                                     .addInterceptor(new LoggerInterceptor("TAG"))

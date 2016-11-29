@@ -26,7 +26,7 @@ public class ProviderTestActivity extends AbstractBaseActivity {
     // 内容处理器
     private ContentResolver mContentResolver;
 
-    Uri uri = Uri.parse(SqlConstant.SCHEME + SqlConstant.AUTHORITY + "/" + SqlConstant.TB_TEST_NAME);
+    Uri uri = Uri.parse(SqlConstant.SCHEME + SqlConstant.PERSONAL_INFO_AUTHORITY + "/" + SqlConstant.TB_TEST_NAME);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
