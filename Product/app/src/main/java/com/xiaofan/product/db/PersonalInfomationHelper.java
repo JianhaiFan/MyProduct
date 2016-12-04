@@ -2,6 +2,7 @@ package com.xiaofan.product.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.xiaofan.product.domain.constant.Constant;
@@ -103,17 +104,68 @@ public class PersonalInfomationHelper extends SQLiteOpenHelper{
 
                     instance = new PersonalInfomationHelper(ctx,dbPath,SqlConstant.DB_PERSONAL_INFO_VERSION);
 
-                    try {
-                        instance.getWritableDatabase();
-                    }catch (Exception e) {
-
-                        LogUtil.e(" getInstance Exception: " + e.toString());
-                    }
-
                 }
 
             }
         return instance;
+    }
+
+    /**
+     * 打开指定数据库
+     * @param ctx 上下文
+     * @return 返回给定的数据库
+     */
+    public static SQLiteDatabase openDatabase(Context ctx) {
+        instance = PersonalInfomationHelper.getInstance(ctx);
+        // 打开的数据库的引用
+        SQLiteDatabase db = null;
+        try {
+            db = instance.getWritableDatabase();
+        }catch (Exception e) {
+            LogUtil.e("打开数据库异常: " + e.toString());
+        } finally {
+
+            /**
+             * SharedPreferences中用户切换思路:
+             * 1.userId和oldUserId值相等
+             *      1.1.游客身份(包含清除内存数据)，都为游客身份的Id
+             *      1.2.当用户正常登录退出应用之后，没有退出账号（保持登录状态），userId和oldUserId值相等，都为当前登录用户的Id
+             * 2.userId和oldUserId值不相等
+             *      2.1.游客身份第一次注册完之后的逻辑
+             *          2.1.1.注册完成后不需要登录，在注册成功之后，设置userId的值为当前用户的Id，oldUserId的值为游客身份的Id
+             *          2.1.2.注册完成后需要登录或者完善信息，在登录成功之后，设置userId的值为当前用户的Id，oldUserId的值为游客身份的Id
+             *      2.2.用户成功打开数据库之后，变更oldUserId的值为userId的值
+             *      2.3.当前用户点击设置中的退出应用按钮之后的逻辑
+             *          2.3.1.当前用户的userId变更为游客身份的Id，这是游客身份可以进行游客应有的操作(微信是没有这一步逻辑，后期扩展用)
+             *          2.3.2.当前用户继续登录之前的账号，登录成功之后，变更userId的值为当前用户的Id
+             *          2.3.3.当前用户切换账号登录到别的账号，变更userId的值为变更用户的Id
+             */
+
+            if (db != null) {
+                // 上一个用户的ID
+                String oldUserId = SharedPreferencesUtil.get(ctx, Constant.USER_INFO_FILE_NAME,Constant.OLD_USER_ID,Constant.DEFAULT_USER_ID);
+                // 当前用户的ID(创建数据库的时候依据当前用户的ID)
+                String userId = SharedPreferencesUtil.get(ctx, Constant.USER_INFO_FILE_NAME,Constant.USER_ID,Constant.DEFAULT_USER_ID);
+
+                if(!oldUserId.equals(userId)) {
+                    SharedPreferencesUtil.set(ctx,Constant.USER_INFO_FILE_NAME,Constant.OLD_USER_ID,userId);
+                }
+
+            }
+
+            return db;
+        }
+    }
+
+
+    /**
+     * 关闭指定数据库
+     * @param db
+     */
+    public static void closeDatabase(SQLiteDatabase db) {
+        if (db != null && db.isOpen()) {
+            db.close();
+        }
     }
 
 

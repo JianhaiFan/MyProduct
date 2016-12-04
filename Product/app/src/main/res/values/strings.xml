@@ -21,6 +21,12 @@
     <string name="del" translatable="false">删除</string>
     <string name="query" translatable="false">查询</string>
     <string name="update" translatable="false">修改</string>
+    <string name="login_with_phone" translatable="false">使用手机号登录</string>
+    <string name="country_area" translatable="false">国家/地区</string>
+    <string name="phone_hint" translatable="false">+86</string>
+    <string name="password_hint" translatable="false">密码</string>
+    <string name="input_phone_hint" translatable="false">你的手机号码</string>
+    <string name="input_psd_hint" translatable="false">填写密码</string>
 
 
 </resources>

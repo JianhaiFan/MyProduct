@@ -10,7 +10,7 @@
     <string name="test_title" translatable="false">Test Title</string>
     <string name="today" translatable="false">Today</string>
     <string name="yesterday" translatable="false">Yesterday</string>
-    <string name="yms" translatable="false">YiMaiSi</string>
+    <string name="yms" translatable="false">Medref</string>
     <string name="content_hint" translatable="false">This is the content area. </string>
     <string name="auto" translatable="false">Auto</string>
     <string name="chinese_simple" translatable="false">Chinese Simple</string>
@@ -21,4 +21,9 @@
     <string name="del" translatable="false">Delete</string>
     <string name="query" translatable="false">Query</string>
     <string name="update" translatable="false">Update</string>
+    <string name="login_with_phone" translatable="false">Login With Phone</string>
+    <string name="country_area" translatable="false">Country/Area</string>
+    <string name="input_phone_hint" translatable="false">Your Phone Number</string>
+    <string name="input_psd_hint" translatable="false">Enter Password</string>
+    <string name="password_hint" translatable="false">Password</string>
 </resources>

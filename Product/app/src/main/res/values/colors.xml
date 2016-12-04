@@ -9,9 +9,12 @@
     <color name="color_black">#000000</color>
     <color name="color_red">#FF0000</color>
     <color name="color_green">#00FF00</color>
-    <color name="color_DADADA">#DADADA</color>
-    <color name="color_EBEBEB">#EBEBEB</color>
+    <color name="color_dadada">#DADADA</color>
+    <color name="color_dedede">#DEDEDE</color>
+    <color name="color_ebebeb">#EBEBEB</color>
     <color name="color_484848">#484848</color>
+    <color name="color_212121">#212121</color>
+    <color name="color_47c11d">#47C11D</color>
 
 
     <!-- 业务颜色分类 -->
@@ -22,12 +25,14 @@
     <color name="color_item_pressed">#D9D9D9</color>
 
     <!-- 字体颜色渐变分类 -->
+    <color name="color_font_white_not_enable">#BEE8BE</color>
     <color name="color_font_white_normal">#FFFFFF</color>
     <color name="color_font_white_normal_pressed">#A0D6A0</color>
     <color name="color_font_black_normal">#5A5A5A</color>
     <color name="color_font_black_normal_pressed">#888888</color>
 
     <!-- 背景颜色渐变分类 -->
+    <color name="color_bg_green_not_enable">#A3DEA3</color>
     <color name="color_bg_green_normal">#1AAD19</color>
     <color name="color_bg_green_normal_pressed">#179B16</color>
     <color name="color_bg_white_normal">#F8F8F8</color>

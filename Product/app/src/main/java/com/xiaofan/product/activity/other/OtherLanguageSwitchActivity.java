@@ -1,35 +1,19 @@
 package com.xiaofan.product.activity.other;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.xiaofan.product.R;
 import com.xiaofan.product.activity.AbstractBaseActivity;
-import com.xiaofan.product.domain.constant.Constant;
-import com.xiaofan.product.domain.constant.SqlConstant;
-import com.xiaofan.product.util.DensityUtil;
-import com.xiaofan.product.util.LogUtil;
 import com.xiaofan.product.util.ResourceUtil;
-import com.xiaofan.product.util.ToastUtil;
-import com.xiaofan.product.widget.DynamicListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,12 +107,12 @@ public class OtherLanguageSwitchActivity extends AbstractBaseActivity {
             if (i == getCount() - 1) {
                 params.leftMargin = 0;
                 params.rightMargin = 0;
-                view.setBackgroundColor(ResourceUtil.getColor(mContext,R.color.color_EBEBEB));
+                view.setBackgroundColor(ResourceUtil.getColor(mContext,R.color.color_ebebeb));
 
             }else {
                 params.leftMargin = (int) ResourceUtil.getDimension(mContext,R.dimen.yms_dimens_30_0_px);
                 params.rightMargin = (int) ResourceUtil.getDimension(mContext,R.dimen.yms_dimens_30_0_px);
-                view.setBackgroundColor(ResourceUtil.getColor(mContext,R.color.color_DADADA));
+                view.setBackgroundColor(ResourceUtil.getColor(mContext,R.color.color_dadada));
             }
             view.setLayoutParams(params);
 

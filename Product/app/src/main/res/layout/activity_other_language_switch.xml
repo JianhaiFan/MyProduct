@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_EBEBEB"
+    android:background="@color/color_ebebeb"
     >
 
 
@@ -13,7 +13,7 @@
         android:id="@+id/lv_language"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_EBEBEB"
+        android:background="@color/color_ebebeb"
         android:layout_marginTop="@dimen/yms_dimens_41.0_px"
         android:divider="@null"
         android:scrollbars="none"
