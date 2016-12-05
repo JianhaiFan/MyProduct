@@ -27,6 +27,7 @@
     <string name="password_hint" translatable="false">密码</string>
     <string name="input_phone_hint" translatable="false">你的手机号码</string>
     <string name="input_psd_hint" translatable="false">填写密码</string>
+    <string name="loading" translatable="false">加载中</string>
 
 
 </resources>

@@ -62,10 +62,9 @@ public class ToastUtil {
      * @param message 显示的字符串
      * @param length 显示时间
      */
-    public static void show(final Context context, final String message,
-                            final int length) {
-        int strSDKVersion = android.os.Build.VERSION.SDK_INT;
-        if (strSDKVersion >= 14) {
+    public static void show(final Context context, final String message, final int length) {
+
+        if (AndroidVersionUtil.isIceCreamSandwich()) {
             if (toast != null) {
                 reMakeText(context, message, length);
             } else {

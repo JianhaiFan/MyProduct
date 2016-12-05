@@ -67,6 +67,11 @@ public class RecycleViewActivity extends AbstractBaseActivity {
         super.onDestroy();
     }
 
+    @Override
+    public boolean backCode() {
+        return false;
+    }
+
 
     class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder>
     {

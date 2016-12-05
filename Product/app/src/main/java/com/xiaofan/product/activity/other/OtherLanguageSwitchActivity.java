@@ -66,6 +66,11 @@ public class OtherLanguageSwitchActivity extends AbstractBaseActivity {
 
     }
 
+    @Override
+    public boolean backCode() {
+        return false;
+    }
+
 
     public void onBack(View view) {
         finish();

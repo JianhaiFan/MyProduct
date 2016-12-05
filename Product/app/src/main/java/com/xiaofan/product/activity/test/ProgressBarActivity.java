@@ -69,6 +69,11 @@ public class ProgressBarActivity extends AbstractBaseActivity {
 
     }
 
+    @Override
+    public boolean backCode() {
+        return false;
+    }
+
 
     public void exit(View view) {
 

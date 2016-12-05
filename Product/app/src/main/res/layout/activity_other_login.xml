@@ -155,7 +155,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@color/color_white"
-                android:layout_marginLeft="@dimen/yms_dimens_116.0_px"
+                android:layout_marginLeft="@dimen/yms_dimens_108.0_px"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:maxLength="16"

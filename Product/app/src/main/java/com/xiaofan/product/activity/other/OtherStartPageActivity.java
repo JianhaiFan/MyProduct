@@ -26,6 +26,11 @@ public class OtherStartPageActivity extends AbstractBaseActivity{
         mContext = OtherStartPageActivity.this;
     }
 
+    @Override
+    public boolean backCode() {
+        return false;
+    }
+
 
     public void onSwitchLanguage(View view) {
         startActivity(new Intent(mContext,OtherLanguageSwitchActivity.class));

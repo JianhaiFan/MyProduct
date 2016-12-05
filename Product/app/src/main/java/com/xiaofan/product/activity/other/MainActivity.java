@@ -90,6 +90,11 @@ public class MainActivity extends AbstractBaseActivity {
         super.onDestroy();
     }
 
+    @Override
+    public boolean backCode() {
+        return false;
+    }
+
 
 }
 

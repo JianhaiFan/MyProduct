@@ -279,4 +279,9 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
         // 取消请求
         OkHttpUtil.cancel(mContext);
     }
+
+    @Override
+    public boolean backCode() {
+        return false;
+    }
 }

@@ -2,6 +2,7 @@ package com.xiaofan.product.activity.other;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 import com.xiaofan.product.R;
 import com.xiaofan.product.activity.AbstractBaseActivity;
 import com.xiaofan.product.util.ToastUtil;
+import com.xiaofan.product.widget.dialog.LoadingDialog;
 
 /**
  * @author: 范建海
@@ -32,6 +34,15 @@ public class OtherLoginActivity extends AbstractBaseActivity {
     private View view_psd_divider;
     private Button bt_login;
 
+    private LoadingDialog dialog;
+    private Handler mHandler = new Handler() {
+        public void dispatchMessage(android.os.Message msg) {
+            if (dialog != null && dialog.isShowing()) {
+                dialog.dismiss();
+            }
+        };
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +60,11 @@ public class OtherLoginActivity extends AbstractBaseActivity {
 
         initListener();
 
+    }
+
+    @Override
+    public boolean backCode() {
+        return false;
     }
 
     public void initListener() {
@@ -94,7 +110,21 @@ public class OtherLoginActivity extends AbstractBaseActivity {
 
 
     public void onLogin(View view) {
-        ToastUtil.show(mContext,"登录",0);
+        dialog = new LoadingDialog(this, R.layout.dialog_tips_loading,R.string.loading);
+        dialog.show();
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                mHandler.sendEmptyMessage(1);
+            }
+        }).start();
     }
 
     public void onBack(View view) {

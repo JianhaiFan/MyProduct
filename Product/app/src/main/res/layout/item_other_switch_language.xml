@@ -38,7 +38,7 @@
             android:id="@+id/view"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/yms_dimens_2.0_px"
+            android:layout_height="@dimen/yms_dimens_1.0_px"
             />
 
     </RelativeLayout>

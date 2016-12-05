@@ -39,6 +39,10 @@ public class ProviderTestActivity extends AbstractBaseActivity {
         mContentResolver = getContentResolver();
     }
 
+    @Override
+    public boolean backCode() {
+        return false;
+    }
 
 
     public void onInsert(View view) {

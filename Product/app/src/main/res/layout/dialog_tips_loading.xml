@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/img_tips_bg"
+    android:gravity="center" >
+    <View
+        android:layout_width="@dimen/yms_dimens_240.0_px"
+        android:layout_height="@dimen/yms_dimens_240.0_px"
+        android:layout_centerInParent="true" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical" >
+        <ProgressBar
+            android:layout_width="@dimen/yms_dimens_160.0_px"
+            android:layout_height="@dimen/yms_dimens_160.0_px"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/yms_dimens_8.0_px"
+            android:clickable="false"
+            android:gravity="center"
+            android:indeterminateDrawable="@drawable/loading" />
+        <TextView
+            android:id="@+id/tips_loading_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="加载中"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/yms_font_34_px" />
+    </LinearLayout>
+</RelativeLayout>

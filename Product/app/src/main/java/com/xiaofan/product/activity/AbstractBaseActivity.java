@@ -6,6 +6,7 @@ import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -116,6 +117,22 @@ public abstract class AbstractBaseActivity extends Activity {
 
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // 事件被消费的标志
+        boolean isEventConsumed = false;
 
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            isEventConsumed = backCode();
+        }
 
+        return isEventConsumed == true ? isEventConsumed : super.onKeyDown(keyCode,event);
+    }
+
+    /**
+     * 点击物理返回键或者点击界面上返回键执行的方法
+     * 子类要具体给出实现部分代码
+     * @return
+     */
+    public abstract boolean backCode();
 }
