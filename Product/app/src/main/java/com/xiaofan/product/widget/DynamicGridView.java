@@ -38,37 +38,36 @@ public class DynamicGridView extends GridView {
 
     /**
      * 计算GridView的高度
-     * @param gridView
      * @param columnCount GridView的列数
      * @param verticalSpacing 为了需要兼容到API16以下的版本，如果有垂直间距，需要传递一个垂直间距
      */
-    public void fixGridViewHeight(GridView gridView, int columnCount,int verticalSpacing){
+    public void fixGridViewHeight(int columnCount,int verticalSpacing){
         // 如果没有设置数据适配器，则ListView没有子项，返回。
-        ListAdapter listAdapter = gridView.getAdapter();
+        ListAdapter listAdapter = this.getAdapter();
 
         int totalHeight = 0;
         if (listAdapter == null) {
             return;
         }
         for (int i = 0, len = listAdapter.getCount(); i < len; i++) {
-            View listViewItem = listAdapter.getView(i , null, gridView);
+            View listViewItem = listAdapter.getView(i , null, this);
             // 计算子项View 的宽高
-            int desiredWidth = View.MeasureSpec.makeMeasureSpec(gridView.getWidth(), View.MeasureSpec.AT_MOST);
+            int desiredWidth = View.MeasureSpec.makeMeasureSpec(this.getWidth(), View.MeasureSpec.AT_MOST);
             listViewItem.measure(desiredWidth, 0);
             // 计算所有子项的高度和
             totalHeight += listViewItem.getMeasuredHeight();
         }
         totalHeight = totalHeight/columnCount;
-        ViewGroup.LayoutParams params = gridView.getLayoutParams();
+        ViewGroup.LayoutParams params = this.getLayoutParams();
         // listView.getDividerHeight()获取子项间分隔符的高度
         // params.height设置ListView完全显示需要的高度
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
             // 版本兼容16
             params.height = totalHeight+ (verticalSpacing * (listAdapter.getCount()/columnCount - 1));
         }else {
-            params.height = totalHeight+ (gridView.getVerticalSpacing() * (listAdapter.getCount() / columnCount - 1));
+            params.height = totalHeight+ (this.getVerticalSpacing() * (listAdapter.getCount() / columnCount - 1));
         }
-        gridView.setLayoutParams(params);
+        this.setLayoutParams(params);
     }
 
     /**

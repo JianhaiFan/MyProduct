@@ -1,6 +1,8 @@
 package com.xiaofan.product.util;
 
 
+import android.app.ActivityManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -105,4 +107,27 @@ public class ManifestUtil {
         }
         return permissions;
     }
+
+
+    /**
+     *判断当前应用程序处于前台还是后台
+     * 注意：该方法需要添加权限 <uses-permission android:name="android.permission.GET_TASKS"/>
+     */
+    public static boolean isApplicationBroughtToBackground(final Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> tasks = am.getRunningTasks(1);
+        if (!tasks.isEmpty()) {
+            ComponentName topActivity = tasks.get(0).topActivity;
+            if (!topActivity.getPackageName().equals(context.getPackageName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
 }

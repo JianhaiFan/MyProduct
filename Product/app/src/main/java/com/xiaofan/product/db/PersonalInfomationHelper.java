@@ -2,7 +2,6 @@ package com.xiaofan.product.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.xiaofan.product.domain.constant.Constant;
@@ -20,7 +19,7 @@ import com.xiaofan.product.util.ValidateUtil;
  * @changed by:
  */
 public class PersonalInfomationHelper extends SQLiteOpenHelper{
-
+    // 个人信息帮助实例
     private static PersonalInfomationHelper instance;
 
     private PersonalInfomationHelper(Context ctx, String name,int version) {
@@ -113,7 +112,7 @@ public class PersonalInfomationHelper extends SQLiteOpenHelper{
     /**
      * 打开指定数据库
      * @param ctx 上下文
-     * @return 返回给定的数据库
+     * @return 返回给定的数据库或者null
      */
     public static SQLiteDatabase openDatabase(Context ctx) {
         instance = PersonalInfomationHelper.getInstance(ctx);

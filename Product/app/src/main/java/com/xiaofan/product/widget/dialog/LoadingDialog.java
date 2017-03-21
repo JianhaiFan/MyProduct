@@ -49,7 +49,7 @@ public class LoadingDialog extends AlertDialog {
 			tips_loading_msg.setText(message);
 		}
 
-		setCancelable(false);
+		setCancelable(true);
 		setCanceledOnTouchOutside(false);
 	}
 

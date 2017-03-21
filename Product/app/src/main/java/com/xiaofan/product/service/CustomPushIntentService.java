@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 import com.umeng.message.UmengMessageService;
 import com.xiaofan.product.domain.UmengMessageBean;
 import com.xiaofan.product.util.GsonUtil;
+import com.xiaofan.product.util.LogUtil;
 
 import org.android.agoo.common.AgooConstants;
 
@@ -43,6 +44,7 @@ public class CustomPushIntentService extends UmengMessageService {
      */
     public void sendNotification(Context context,UmengMessageBean umb) {
         // TODO 通知栏提示，以及后台开进程同步数据
+        LogUtil.e("sendNotification: ==============" );
 
     }
 }

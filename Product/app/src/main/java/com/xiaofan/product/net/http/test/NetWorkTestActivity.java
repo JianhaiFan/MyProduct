@@ -11,12 +11,14 @@ import android.widget.TextView;
 import com.google.gson.reflect.TypeToken;
 import com.xiaofan.product.R;
 import com.xiaofan.product.activity.AbstractBaseActivity;
+import com.xiaofan.product.domain.constant.UrlConstant;
 import com.xiaofan.product.net.http.OkHttpUtil;
 import com.xiaofan.product.util.GsonUtil;
 import com.xiaofan.product.util.LoaderImageUtil;
 import com.xiaofan.product.util.LogUtil;
 import com.zhy.http.okhttp.callback.Callback;
 import com.zhy.http.okhttp.callback.FileCallBack;
+import com.zhy.http.okhttp.callback.StringCallback;
 
 import java.io.File;
 import java.util.HashMap;
@@ -61,48 +63,7 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
      * @param view
      */
     public void onGet(View view) {
-        Map<String,String> params = new HashMap<>();
-        params.put("userLoginId", "18210836561");
-        params.put("oldPassword", "111111");
-        params.put("newPassword", "222222");
 
-        OkHttpUtil.get(mContext,"http://192.168.1.24:9090/sysCommon/control/restful/ajaxUpdatePassword", params, new Callback<TestGetAndPostBean>() {
-
-            @Override
-            public void onBefore(Request request, int id) {
-                pb_loading.setVisibility(View.VISIBLE);
-                tv_text.setVisibility(View.VISIBLE);
-                iv_img.setVisibility(View.GONE);
-            }
-
-            @Override
-            public TestGetAndPostBean parseNetworkResponse(Response response, int id) throws Exception {
-                // 服务器响应返回的Json串，注意，用临时变量接收一下，再做相应的操作，方法( response.body().string() )只能被调用一次，否则会返回空
-                String body = response.body().string();
-                TestGetAndPostBean testBean = GsonUtil.json2Object(body,new TypeToken<TestGetAndPostBean>(){});
-                return testBean;
-            }
-
-            @Override
-            public void onResponse(TestGetAndPostBean testBean, int id) {
-                // 对实体Bean进行操作之前，要进行判空处理
-                if (testBean != null) {
-                    LogUtil.e("TestBean:" + testBean.toString());
-                    tv_text.setText("GET请求:" + testBean.toString());
-                }
-
-            }
-
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                tv_text.setText("GET请求:" + "异常-->" + e.toString());
-            }
-
-            @Override
-            public void onAfter(int id) {
-                pb_loading.setVisibility(View.GONE);
-            }
-        });
     }
 
     /**
@@ -110,49 +71,6 @@ public class NetWorkTestActivity extends AbstractBaseActivity {
      * @param view
      */
     public void onPost(View view) {
-        Map<String,String> params = new HashMap<>();
-        params.put("userLoginId", "18210836561");
-        params.put("oldPassword", "222222");
-        params.put("newPassword", "111111");
-
-        OkHttpUtil.post(mContext,"http://192.168.1.24:9090/sysCommon/control/restful/ajaxUpdatePassword", params, new Callback<TestGetAndPostBean>() {
-
-            @Override
-            public void onBefore(Request request, int id) {
-                pb_loading.setVisibility(View.VISIBLE);
-                tv_text.setVisibility(View.VISIBLE);
-                iv_img.setVisibility(View.GONE);
-            }
-
-            @Override
-            public TestGetAndPostBean parseNetworkResponse(Response response, int id) throws Exception {
-                // 服务器响应返回的Json串，注意，用临时变量接收一下，再做相应的操作，方法( response.body().string() )只能被调用一次，否则会返回空
-                String body = response.body().string();
-                TestGetAndPostBean testBean = GsonUtil.json2Object(body,new TypeToken<TestGetAndPostBean>(){});
-                return testBean;
-            }
-
-            @Override
-            public void onResponse(TestGetAndPostBean testBean, int id) {
-
-                // 对实体Bean进行操作之前，要进行判空处理
-                if (testBean != null) {
-                    LogUtil.e("TestBean:" + testBean.toString());
-                    tv_text.setText("POST请求:" + testBean.toString());
-                }
-
-            }
-
-            @Override
-            public void onError(Call call, Exception e, int id) {
-                tv_text.setText("POST请求:" + "异常-->" + e.toString());
-            }
-
-            @Override
-            public void onAfter(int id) {
-                pb_loading.setVisibility(View.GONE);
-            }
-        });
     }
 
     /**

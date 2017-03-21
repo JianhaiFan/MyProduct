@@ -1,9 +1,10 @@
 package com.xiaofan.product.receiver;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.xiaofan.product.activity.AbstractBaseActivity;
 
 /**
  * @author: 范建海
@@ -15,6 +16,6 @@ import android.content.Intent;
 public class ExitAppReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        ((Activity)context).finish();
+        ((AbstractBaseActivity)context).finish();
     }
 }

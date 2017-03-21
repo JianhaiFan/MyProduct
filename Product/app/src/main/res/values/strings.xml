@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">产品</string>
+    <string name="app_name" translatable="false">老友记</string>
     <!-- 自定义字符串 -->
     <string name="yms" translatable="false">医麦思</string>
     <string name="today" translatable="false">今天</string>

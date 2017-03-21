@@ -5,7 +5,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -40,29 +39,28 @@ public class DynamicListView extends ListView {
 
     /**
      * 动态计算ListView的高度
-     * @param listView 待测控件
      */
-    public void fixListViewHeight(ListView listView) {
+    public void fixListViewHeight() {
         // 如果没有设置数据适配器，则ListView没有子项，返回。
-        ListAdapter listAdapter = listView.getAdapter();
+        ListAdapter listAdapter = this.getAdapter();
         int totalHeight = 0;
         if (listAdapter == null) {
             return;
         }
         for (int i = 0, len = listAdapter.getCount(); i < len; i++) {
-            View listViewItem = listAdapter.getView(i , null, listView);
+            View listViewItem = listAdapter.getView(i , null, this);
             // 计算子项View 的宽高
-            int desiredWidth = View.MeasureSpec.makeMeasureSpec(listView.getWidth(), View.MeasureSpec.AT_MOST);
+            int desiredWidth = View.MeasureSpec.makeMeasureSpec(this.getWidth(), View.MeasureSpec.AT_MOST);
             listViewItem.measure(desiredWidth, 0);
             // 计算所有子项的高度和
             totalHeight += listViewItem.getMeasuredHeight();
         }
 
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        ViewGroup.LayoutParams params = this.getLayoutParams();
         // listView.getDividerHeight()获取子项间分隔符的高度
         // params.height设置ListView完全显示需要的高度
-        params.height = totalHeight+ (listView.getDividerHeight() * (listAdapter.getCount() - 1));
-        listView.setLayoutParams(params);
+        params.height = totalHeight+ (this.getDividerHeight() * (listAdapter.getCount() - 1));
+        this.setLayoutParams(params);
     }
 
     /**
